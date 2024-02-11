@@ -118,7 +118,7 @@ export default function Skills(){
     return(
         <section className="mb-20" >
             <h2 className="text-3xl mb-4 text-center" >My skills are</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5" >
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4" >
             {
                 skills.map(skill => (
                     <Button key={skill.id} className="dark:bg-[#181818] cursor-default px-6 py-16  rounded-lg text-center flex flex-col justify-center items-center gap-4" >
