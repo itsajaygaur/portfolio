@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import { ProvideTheme, ProvideNextUI } from './providers'
+import { Toaster } from 'react-hot-toast'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <ProvideTheme>
           <ProvideNextUI>
             {children}
+            <Toaster />
           </ProvideNextUI>
         </ProvideTheme>
       </body>
