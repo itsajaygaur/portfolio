@@ -13,6 +13,9 @@ import { FaGitAlt } from "react-icons/fa";
 import { SiRedis } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiRedux } from "react-icons/si";
+import { SiPrisma } from "react-icons/si";
+import { FaLinux } from "react-icons/fa";
+import { FaAws } from "react-icons/fa";
 
 import { Button } from "@nextui-org/react";
 
@@ -41,7 +44,7 @@ export default function Skills(){
         },
         {
             id: 4, 
-            skillName: 'React',
+            skillName: 'React.js',
             skillIcon: SiReact,
             category: 'frontend'
         },
@@ -71,7 +74,7 @@ export default function Skills(){
         },
         {
             id: 9, 
-            skillName: 'Postgress',
+            skillName: 'Postgres',
             skillIcon: SiPostgresql,
             category: 'backend'
         },
@@ -111,17 +114,35 @@ export default function Skills(){
             skillIcon: SiRedux,
             category: 'frontend'
         },
+        {
+            id: 16, 
+            skillName: 'Prisma',
+            skillIcon: SiPrisma,
+            category: 'backend'
+        },
+        {
+            id: 17, 
+            skillName: 'Linux',
+            skillIcon: FaLinux,
+            category: 'backend'
+        },
+        {
+            id: 18, 
+            skillName: 'AWS',
+            skillIcon: FaAws,
+            category: 'backend'
+        },
 
     ]
 
 
     return(
-        <section className="mb-20" >
-            <h2 className="text-3xl mb-4 text-center" >My skills are</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4" >
+        <section className="mb-20 md:mb-40" >
+            <h2 className="text-3xl mb-4 text-center" >My Skills</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4 " >
             {
                 skills.map(skill => (
-                    <Button key={skill.id} className="dark:bg-[#181818] cursor-default px-6 py-16  rounded-lg text-center flex flex-col justify-center items-center gap-4" >
+                    <Button key={skill.id} variant="flat" className=" cursor-default px-6 py-16  rounded-lg text-center flex flex-col justify-center items-center gap-4" >
                         <skill.skillIcon className="flex-none" size="32" />
                         <p className="text-xl" >{skill.skillName}</p>
                     </Button>
