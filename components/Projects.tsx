@@ -1,55 +1,66 @@
 import {Card, CardBody, CardFooter} from "@nextui-org/react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
+import { Link } from "@nextui-org/react";
+import { RxExternalLink } from "react-icons/rx";
+import { FaGithub } from "react-icons/fa";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
+
+
+const projects = [
+  {
+    title: "Mykart - Ecommerce store",
+    img: "/mykart.jpeg",
+    link: "https://mykart.vercel.app",
+    github: 'https://github.com/itsajaygaur/ecommerce'
+  },
+  {
+    title: "Girl PowerX",
+    img: "/girlpowerx.jpeg",
+    link: "https://girlpowerx.com",
+  },
+  {
+    title: "New Orleans Athletic Club",
+    img: "/neworleansathleticclub.jpeg",
+    link: "https://neworleansathleticclub.com",
+  },
+  {
+    title: "Community Management",
+    img: "/community-management.jpeg",
+    link: "https://services.girlpowertalk.com/community-management",
+  },
+  {
+    title: "Staff Augmentation",
+    img: "/staff-augmentation.jpeg",
+    link: "https://services.girlpowertalk.com/staff-augmentation",
+  },
+  {
+    title: "Startup Challange",
+    img: "/startup-challange.jpeg",
+    link: "https://services.girlpowertalk.com/staff-augmentation",
+  },
+  {
+    title: "Website Maintenance",
+    img: "/website-maintenance.jpeg",
+    link: "https://maintenance.blueoceanglobaltech.com",
+  },
+  {
+    title: "Tenzi",
+    img: "/tenzi.jpeg",
+    link: "https://game-tenzi.netlify.app/",
+    github: "https://github.com/itsajaygaur/tenzi"
+  },
+  {
+    title: "Tic Tac Toe",
+    img: "/tictactoe.jpeg",
+    link: "https://itsajaygaur.github.io/tic-tac-toe/",
+    github: "https://github.com/itsajaygaur/tic-tac-toe"
+  },
+];
+
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Mykart - Ecommerce store",
-      img: "/mykart.jpeg",
-      link: "https://mykart.vercel.app",
-    },
-    {
-      title: "Girl PowerX",
-      img: "/girlpowerx.jpeg",
-      link: "https://girlpowerx.com",
-    },
-    {
-      title: "New Orleans Athletic Club",
-      img: "/neworleansathleticclub.jpeg",
-      link: "https://neworleansathleticclub.com",
-    },
-    {
-      title: "Community Management",
-      img: "/community-management.jpeg",
-      link: "https://services.girlpowertalk.com/community-management",
-    },
-    {
-      title: "Staff Augmentation",
-      img: "/staff-augmentation.jpeg",
-      link: "https://services.girlpowertalk.com/staff-augmentation",
-    },
-    {
-      title: "Startup Challange",
-      img: "/startup-challange.jpeg",
-      link: "https://services.girlpowertalk.com/staff-augmentation",
-    },
-    {
-      title: "Website Maintenance",
-      img: "/website-maintenance.jpeg",
-      link: "https://maintenance.blueoceanglobaltech.com",
-    },
-    {
-      title: "Tenzi",
-      img: "/tenzi.jpeg",
-      link: "https://game-tenzi.netlify.app/",
-    },
-    {
-      title: "Tic Tac Toe",
-      img: "/tictactoe.jpeg",
-      link: "https://itsajaygaur.github.io/tic-tac-toe/",
-    },
-  ];
+
 
   return (
     <section className="mb-20 md:mb-40" >
@@ -58,8 +69,7 @@ export default function Projects() {
         <div className="gap-2 sm:gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3" >
 
       {projects.map((item, index) => (
-          <Card shadow="sm" key={index} isPressable={false} >
-            <Link href={item.link} target="_blank" >
+          <Card shadow="lg" key={index} isPressable={false} >
           <CardBody className="overflow-visible p-0">
             <Image
             //   shadow="sm"
@@ -71,11 +81,22 @@ export default function Projects() {
               src={item.img}
             />
           </CardBody>
-          <CardFooter className="text-small justify-between">
+          <CardFooter className="text-small flex-col gap-1 items-start">
             <b>{item.title}</b>
-            {/* <p className="text-default-500">{item.price}</p> */}
+            <div className="flex gap-6 items-center" >
+              <Link underline="hover" href={item.link} target="_blank" className="text-blue-500 dark:text-blue-500" >
+                <FaExternalLinkSquareAlt className="mr-1" />
+                View live
+              </Link>
+              {
+                item.github &&
+                <Link underline="hover" href={item?.github} target="_blank" className="text-blue-500" >
+                <FaGithub className="mr-1" />
+                View code
+              </Link>
+              }
+            </div>
           </CardFooter>
-            </Link>
         </Card>
       ))}
             </div>
