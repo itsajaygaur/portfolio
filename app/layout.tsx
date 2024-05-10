@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
+import { GeistSans } from "geist/font/sans";
+
 import './globals.css'
 import { ProvideTheme, ProvideNextUI } from './providers'
 import { Toaster } from 'react-hot-toast'
@@ -23,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en"  suppressHydrationWarning>
-      <body className={`${poppins.className} `}>
+      <body className={`${GeistSans.className}  `}>
         <ProvideTheme>
           <ProvideNextUI>
             {children}

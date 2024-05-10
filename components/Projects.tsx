@@ -1,62 +1,10 @@
 import {Card, CardBody, CardFooter} from "@nextui-org/react";
 import Image from "next/image";
-// import Link from "next/link";
 import { Link } from "@nextui-org/react";
-import { RxExternalLink } from "react-icons/rx";
 import { FaGithub } from "react-icons/fa";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { projects } from "@/constants/data";
 
-
-const projects = [
-  {
-    title: "Mykart - Ecommerce store",
-    img: "/mykart.jpeg",
-    link: "https://mykart.vercel.app",
-    github: 'https://github.com/itsajaygaur/ecommerce'
-  },
-  {
-    title: "Girl PowerX",
-    img: "/girlpowerx.jpeg",
-    link: "https://girlpowerx.com",
-  },
-  {
-    title: "New Orleans Athletic Club",
-    img: "/neworleansathleticclub.jpeg",
-    link: "https://neworleansathleticclub.com",
-  },
-  {
-    title: "Community Management",
-    img: "/community-management.jpeg",
-    link: "https://services.girlpowertalk.com/community-management",
-  },
-  {
-    title: "Staff Augmentation",
-    img: "/staff-augmentation.jpeg",
-    link: "https://services.girlpowertalk.com/staff-augmentation",
-  },
-  {
-    title: "Startup Challange",
-    img: "/startup-challange.jpeg",
-    link: "https://services.girlpowertalk.com/staff-augmentation",
-  },
-  {
-    title: "Website Maintenance",
-    img: "/website-maintenance.jpeg",
-    link: "https://maintenance.blueoceanglobaltech.com",
-  },
-  {
-    title: "Tenzi",
-    img: "/tenzi.jpeg",
-    link: "https://game-tenzi.netlify.app/",
-    github: "https://github.com/itsajaygaur/tenzi"
-  },
-  {
-    title: "Tic Tac Toe",
-    img: "/tictactoe.jpeg",
-    link: "https://itsajaygaur.github.io/tic-tac-toe/",
-    github: "https://github.com/itsajaygaur/tic-tac-toe"
-  },
-];
 
 
 export default function Projects() {
@@ -68,8 +16,8 @@ export default function Projects() {
         <p className="text-center mb-4" >Some of the projects are from work and some are on my own time.</p>
         <div className="gap-2 sm:gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3" >
 
-      {projects.map((item, index) => (
-          <Card shadow="lg" key={index} isPressable={false} >
+      {projects.map((item) => (
+          <Card shadow="lg" key={item.id} isPressable={false} >
           <CardBody className="overflow-visible p-0">
             <Image
             //   shadow="sm"

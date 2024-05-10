@@ -36,10 +36,12 @@ export default function ContactMe(){
     // console.log('err ', errors)
 
     return(
-        <section className=" pb-20" >
-            <h2 className="mb-4 text-3xl text-center" >Contact Me</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto space-y-4" >
-                <div>
+        <section className=" " >
+            <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 sm:grid-cols-2  gap-4" >
+                
+
+
+                <div className="" >
 
                 <Controller
                     control={control}
@@ -49,7 +51,7 @@ export default function ContactMe(){
                 {/* <ErrorMessage error={errors.name} /> */}
                 </div>
 
-                <div>
+                <div className="" >
 
                 <Controller
                     control={control}
@@ -59,7 +61,7 @@ export default function ContactMe(){
                  {/* <ErrorMessage error={errors.email} /> */}
                     </div>
 
-                <div>
+                <div className="sm:col-span-2" >
                     
                 <Controller
                     control={control}
@@ -70,7 +72,7 @@ export default function ContactMe(){
                     </div>
                 
                 
-                <Button isLoading={isSubmitting} type="submit" className="w-full" variant="solid" >Submit</Button>
+                <Button isLoading={isSubmitting} type="submit" className="sm:col-span-2" variant="solid" >Send</Button>
 
             </form>
         </section>
