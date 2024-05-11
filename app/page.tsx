@@ -102,7 +102,12 @@ export default function Home() {
         {/* Contact Me */}
         <h2 className="mb-4 text-xl font-semibold" >Leave a message</h2>
         <ContactMe />
+          
 
-    </main>
+        <footer className="mt-16" >
+            <p>Checkout another <Link href="/v2" underline="always" color="foreground" > version </Link> of this portfolio  </p>
+        </footer>
+        
+    </main> 
   );
 }
