@@ -46,7 +46,7 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="name"
-                    render={({field}) => <Input {...field}  variant="bordered" type="text" label="Name" isInvalid={!!errors.name?.message} errorMessage={errors.name?.message} /> }
+                    render={({field}) => <Input {...field} size="sm" radius="md" variant="bordered" type="text" label="Name" isInvalid={!!errors.name?.message} errorMessage={errors.name?.message} /> }
                     />
                 {/* <ErrorMessage error={errors.name} /> */}
                 </div>
@@ -56,7 +56,7 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="email"
-                    render={({field}) => <Input {...field} variant="bordered" type="text" label="Email" isInvalid={!!errors.email?.message} errorMessage={errors.email?.message}  /> }
+                    render={({field}) => <Input {...field} size="sm" radius="md" variant="bordered" type="text" label="Email" isInvalid={!!errors.email?.message} errorMessage={errors.email?.message}  /> }
                     />
                  {/* <ErrorMessage error={errors.email} /> */}
                     </div>
@@ -66,7 +66,7 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="message"
-                    render={({field}) => <Textarea {...field} variant="bordered" type="text" label="Message" isInvalid={!!errors.message?.message} errorMessage={errors.message?.message} /> }
+                    render={({field}) => <Textarea {...field} size="sm" radius="md" variant="bordered" type="text" label="Message" isInvalid={!!errors.message?.message} errorMessage={errors.message?.message} /> }
                     />
                  {/* <ErrorMessage error={errors.message} /> */}
                     </div>
