@@ -35,7 +35,7 @@ export default function Home() {
           <Link
             color="foreground"
             target="_blank"
-            href="https://www.linkedin.com/in/ajay-gaur-70a4951ab/"
+            href="https://www.linkedin.com/in/itsajaygaur"
           >
             <Button variant="light" isIconOnly>
               <FaLinkedinIn size={18} />
