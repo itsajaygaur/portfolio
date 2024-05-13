@@ -5,6 +5,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { ProvideTheme, ProvideNextUI } from "./providers";
 import { Toaster } from "react-hot-toast";
+import Navbar from "@/components/nav";
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -39,6 +40,17 @@ export const metadata: Metadata = {
     description: "Personal portfolio website of Ajay Gaur built with Next.js",
     images: [`${process.env.NEXT_PUBLIC_BASE_URL!}/opengraph-image.png`],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   authors: [
     {
       name: "Ajay Gaur",
@@ -58,7 +70,10 @@ export default function RootLayout({
       <body className={`${GeistSans.className} ${poppins.variable} `}>
         <ProvideTheme>
           <ProvideNextUI>
-            {children}
+            <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4" >
+            <Navbar />
+              {children}
+            </main>
             <Toaster />
           </ProvideNextUI>
         </ProvideTheme>

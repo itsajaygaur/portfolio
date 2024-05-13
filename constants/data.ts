@@ -133,8 +133,16 @@ export const projects = [
     title: "Mykart - Ecommerce store",
     description: "A fully feature ecommerce store with admin panel and payments built with Next.js",
     img: "/mykart.jpeg",
-    link: "https://mykart.vercel.app",
+    link: "https://shop.ajaygaur.in",
     github: "https://github.com/itsajaygaur/ecommerce",
+  },
+  {
+    id: 10,
+    title: "Blog",
+    description: "Blog website with authentication built with Next.js and Auth.js",
+    img: "/mykart.jpeg",
+    link: "https://blog.ajaygaur.in",
+    github: "https://github.com/itsajaygaur/blog",
   },
   {
     id: 2,

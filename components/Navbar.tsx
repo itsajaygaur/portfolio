@@ -1,4 +1,4 @@
-import ThemeToggler from "./ThemeToggler"
+import ThemeToggler from "./theme-toggler"
 import { FaGithub } from "react-icons/fa";
 // import { SiLinkedin } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";

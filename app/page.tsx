@@ -1,8 +1,6 @@
-import ContactMe from "@/components/ContactMe";
-import ThemeToggler from "@/components/ThemeToggler";
+import ContactMe from "@/components/contact-me";
 import { projects, skills } from "@/constants/data";
 import {
-  Button,
   Card,
   CardBody,
   CardFooter,
@@ -13,37 +11,11 @@ import {
 import {
   FaExternalLinkSquareAlt,
   FaGithub,
-  FaLinkedinIn,
 } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4">
-      {/* Navbar */}
-      <nav className="flex justify-between items-center mb-10">
-        <h1 className="text-lg font-semibold"> Ajay</h1>
-        <div className="space-x-1">
-          <Link
-            color="foreground"
-            target="_blank"
-            href="https://github.com/itsajaygaur"
-          >
-            <Button variant="light" isIconOnly>
-              <FaGithub size={18} />
-            </Button>
-          </Link>
-          <Link
-            color="foreground"
-            target="_blank"
-            href="https://www.linkedin.com/in/itsajaygaur"
-          >
-            <Button variant="light" isIconOnly>
-              <FaLinkedinIn size={18} />
-            </Button>
-          </Link>
-          <ThemeToggler />
-        </div>
-      </nav>
+    <main>
 
       {/* About me */}
       <p className="mb-16">
@@ -129,7 +101,7 @@ export default function Home() {
       <h2 className="mb-4 text-xl font-semibold">Leave a message</h2>
       <ContactMe />
 
-      <footer className="mt-16">
+      {/* <footer className="mt-16">
         <p>
           Checkout another{" "}
           <Link href="/v2" underline="always" color="foreground">
@@ -138,7 +110,7 @@ export default function Home() {
           </Link>{" "}
           of this portfolio{" "}
         </p>
-      </footer>
+      </footer> */}
     </main>
   );
 }

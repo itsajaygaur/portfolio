@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import Hero from '@/components/Hero'
-import ThemeToggler from '@/components/ThemeToggler'
-import Navbar from '@/components/Navbar'
-import Skills from '@/components/Skills'
-import ContactMe from '@/components/ContactMe'
-import Projects from '@/components/Projects'
-import AboutMe from '@/components/AboutMe'
+import Hero from '@/components/hero'
+import ThemeToggler from '@/components/theme-toggler'
+import Navbar from '@/components/navbar'
+import Skills from '@/components/skills'
+import ContactMe from '@/components/contact-me'
+import Projects from '@/components/projects'
+import AboutMe from '@/components/about-me'
 
 export default function V2(){
     return(
