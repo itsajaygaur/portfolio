@@ -8,15 +8,15 @@ import {
   Chip,
   Link,
 } from "@nextui-org/react";
-import {
-  FaExternalLinkSquareAlt,
-  FaGithub,
-} from "react-icons/fa";
+import { FaExternalLinkSquareAlt, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+
+
 
 export default function Home() {
   return (
     <main>
-
       {/* About me */}
       <p className="mb-16">
         Hi, my name is <b>Ajay</b>, I am an experienced Full-Stack Web Developer
@@ -24,6 +24,36 @@ export default function Home() {
         web applications with a focus on responsive design and seamless user
         experience using cutting-edge modern trending technologies.
       </p>
+      {/* <p className="" >
+        You can connect with me on{" "}
+        <Link
+          href="https://linkedin.com/in/itsajaygaur"
+          target="_blank"
+          underline="always"
+          color="foreground"
+        >
+          LinkedIn
+        </Link>
+        , follow me on{" "}
+        <Link
+          href="https://twitter.com/itsajaygaur"
+          underline="always"
+          target="_blank"
+          color="foreground"
+        >
+          {" "}
+          Twitter{" "}
+        </Link>
+        , check out my{" "}
+        <Link
+          href="https://github.com/itsajaygaur"
+          color="foreground"
+          underline="always"
+          target="_blank"
+        >
+          Github
+        </Link> or can <Link href="mailto:ajaypathak2527@gmail.com" target="_blank" underline="always" color="foreground" > email </Link> me directly
+      </p> */}
 
       {/* Skills */}
       <h2 className="text-xl font-semibold mb-4">Skills</h2>
@@ -101,16 +131,12 @@ export default function Home() {
       <h2 className="mb-4 text-xl font-semibold">Leave a message</h2>
       <ContactMe />
 
-      {/* <footer className="mt-16">
-        <p>
-          Checkout another{" "}
-          <Link href="/v2" underline="always" color="foreground">
-            {" "}
-            version{" "}
-          </Link>{" "}
-          of this portfolio{" "}
-        </p>
-      </footer> */}
+      <footer className="mt-12 md:mt-16 flex gap-6 ">
+        <Link href="https://github.com/itsajaygaur" color="foreground" target="_blank" ><FaGithub size={20} /></Link>
+        <Link href="https://linkedin.com/in/itsajaygaur" color="foreground" target="_blank" ><FaLinkedin size={20} /></Link>
+        <Link href="https://twitter.com/itsajaygaur" color="foreground" target="_blank" ><FaXTwitter size={20} /></Link>
+        <Link href="mailto:ajaypathak2527@gmail.com" color="foreground" target="_blank" ><MdEmail size={20} /></Link>
+      </footer>
     </main>
   );
 }

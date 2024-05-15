@@ -21,7 +21,7 @@ export default function Navbar(){
               <FaGithub size={18} />
             </Button>
           </Link>
-          <Link
+          {/* <Link
             color="foreground"
             target="_blank"
             href="https://www.linkedin.com/in/itsajaygaur"
@@ -29,7 +29,7 @@ export default function Navbar(){
             <Button variant="light" isIconOnly>
               <FaLinkedinIn size={18} />
             </Button>
-          </Link>
+          </Link> */}
           <ThemeToggler />
         </div>
       </nav>
