@@ -21,7 +21,7 @@ export default function Home() {
         proficient in Next.js, React.js and Node.js. Skilled in building robust
         web applications with a focus on responsive design and seamless user
         experience using cutting-edge modern trending technologies. */}
-        I'm <b>Ajay</b>, a Full-Stack Web Developer passionate about crafting
+        I&apos;m <b>Ajay</b>, a Full-Stack Web Developer passionate about crafting
         exceptional user experiences. I leverage Next.js, React.js, and Node.js
         to build cutting-edge web applications that are not only responsive but
         also a joy to use.
