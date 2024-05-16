@@ -12,7 +12,7 @@ export default async function Blog(){
     const blogs = await getBlogs()
 
     return(
-        <section className="max-w-2xl mx-auto" >
+        <section >
             <h2 className="text-xl font-semibold mb-8" >Read my blogs</h2> 
 
             <div className="flex flex-col gap-4" >

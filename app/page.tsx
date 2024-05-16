@@ -12,17 +12,19 @@ import { FaExternalLinkSquareAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
-
-
 export default function Home() {
   return (
     <main>
       {/* About me */}
       <p className="mb-16">
-        Hi, my name is <b>Ajay</b>, I am an experienced Full-Stack Web Developer
+        {/* Hi, my name is <b>Ajay</b>, I am an experienced Full-Stack Web Developer
         proficient in Next.js, React.js and Node.js. Skilled in building robust
         web applications with a focus on responsive design and seamless user
-        experience using cutting-edge modern trending technologies.
+        experience using cutting-edge modern trending technologies. */}
+        I'm <b>Ajay</b>, a Full-Stack Web Developer passionate about crafting
+        exceptional user experiences. I leverage Next.js, React.js, and Node.js
+        to build cutting-edge web applications that are not only responsive but
+        also a joy to use.
       </p>
       {/* <p className="" >
         You can connect with me on{" "}
@@ -132,10 +134,34 @@ export default function Home() {
       <ContactMe />
 
       <footer className="mt-12 md:mt-16 flex gap-6 ">
-        <Link href="https://github.com/itsajaygaur" color="foreground" target="_blank" ><FaGithub size={20} /></Link>
-        <Link href="https://linkedin.com/in/itsajaygaur" color="foreground" target="_blank" ><FaLinkedin size={20} /></Link>
-        <Link href="https://twitter.com/itsajaygaur" color="foreground" target="_blank" ><FaXTwitter size={20} /></Link>
-        <Link href="mailto:ajaypathak2527@gmail.com" color="foreground" target="_blank" ><MdEmail size={20} /></Link>
+        <Link
+          href="https://github.com/itsajaygaur"
+          color="foreground"
+          target="_blank"
+        >
+          <FaGithub size={20} />
+        </Link>
+        <Link
+          href="https://linkedin.com/in/itsajaygaur"
+          color="foreground"
+          target="_blank"
+        >
+          <FaLinkedin size={20} />
+        </Link>
+        <Link
+          href="https://twitter.com/itsajaygaur"
+          color="foreground"
+          target="_blank"
+        >
+          <FaXTwitter size={20} />
+        </Link>
+        <Link
+          href="mailto:ajaypathak2527@gmail.com"
+          color="foreground"
+          target="_blank"
+        >
+          <MdEmail size={20} />
+        </Link>
       </footer>
     </main>
   );
