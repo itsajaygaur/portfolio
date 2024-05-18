@@ -202,4 +202,12 @@ export const projects = [
     link: "https://itsajaygaur.github.io/tic-tac-toe/",
     github: "https://github.com/itsajaygaur/tic-tac-toe",
   },
+  {
+    id: 11,
+    title: "React flow app",
+    description: "A web app built with MERN stack includes authentication allows users to design and implement nodes and edges using a visual flowchart interface",
+    img: "/tictactoe.jpeg",
+    link: "https://thereactflow.vercel.app/",
+    github: "https://github.com/itsajaygaur/react-flow",
+  },
 ];
