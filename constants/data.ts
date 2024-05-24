@@ -210,4 +210,12 @@ export const projects = [
     link: "https://thereactflow.vercel.app/",
     github: "https://github.com/itsajaygaur/react-flow",
   },
+  {
+    id: 12,
+    title: "Snake game",
+    description: "A simple snake game built with Typescript & Next.js",
+    img: "/tictactoe.jpeg",
+    link: "https://gameofsnake.vercel.app/",
+    github: "https://github.com/itsajaygaur/snake-game",
+  },
 ];
