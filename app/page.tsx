@@ -16,16 +16,19 @@ export default function Home() {
   return (
     <main>
       {/* About me */}
-      <p className="mb-16">
+      <article className="mb-16" >
+
+      <p className="mb-2">
         {/* Hi, my name is <b>Ajay</b>, I am an experienced Full-Stack Web Developer
         proficient in Next.js, React.js and Node.js. Skilled in building robust
         web applications with a focus on responsive design and seamless user
-        experience using cutting-edge modern trending technologies. */}
-        I&apos;m <b>Ajay</b>, a Full-Stack Web Developer passionate about crafting
-        exceptional user experiences. I leverage Next.js, React.js, and Node.js
-        to build cutting-edge web applications that are not only responsive but
-        also a joy to use.
+      experience using cutting-edge modern trending technologies. */}
+        I&apos;m <b>Ajay</b>, a Full-Stack Web Developer passionate about creating
+        exceptional user experiences. I build user-friendly responsive web applications using modern technologies like Next.js, React.js, and Node.js.
+        You can also view my <Link href="/ajay-gaur.pdf" target="_blank" underline="hover" > resume </Link>.
       </p>
+      
+      </article>
       {/* <p className="" >
         You can connect with me on{" "}
         <Link
