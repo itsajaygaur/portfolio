@@ -25,12 +25,13 @@ export default function Home() {
           I&apos;m <b>Ajay</b>, a Full-Stack Web Developer passionate about
           creating exceptional user experiences. I build user-friendly
           responsive web applications using modern technologies like Next.js,
-          React.js, and Node.js. You can also view my{" "}
+          React.js, and Node.js. 
+          {/* You can also view my{" "}
           <Link href="/ajay-gaur.pdf" target="_blank" underline="hover">
             {" "}
             resume{" "}
           </Link>
-          .
+          . */}
         </p>
       </article>
       {/* <p className="" >
