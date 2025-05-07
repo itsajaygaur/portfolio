@@ -16,6 +16,8 @@ import { SiRedux } from "react-icons/si";
 import { SiPrisma } from "react-icons/si";
 import { FaLinux } from "react-icons/fa";
 import { FaAws } from "react-icons/fa";
+import { FaPython } from "react-icons/fa";
+
 
 export const skills = [
   {
@@ -29,6 +31,12 @@ export const skills = [
     skillName: "CSS",
     skillIcon: SiCss3,
     category: "frontend",
+  },
+  {
+    id: 11,
+    skillName: "Typescript",
+    skillIcon: SiTypescript,
+    category: "backend",
   },
   {
     id: 3,
@@ -54,6 +62,12 @@ export const skills = [
     category: "backend",
   },
   {
+    id: 6,
+    skillName: "Python",
+    skillIcon: FaPython,
+    // category: "backend",
+  },
+  {
     id: 7,
     skillName: "Express.js",
     skillIcon: SiExpress,
@@ -75,12 +89,6 @@ export const skills = [
     id: 10,
     skillName: "MySQL",
     skillIcon: SiMysql,
-    category: "backend",
-  },
-  {
-    id: 11,
-    skillName: "Typescript",
-    skillIcon: SiTypescript,
     category: "backend",
   },
   {
