@@ -17,62 +17,26 @@ export default function Home() {
     <main>
       {/* About me */}
       <article className="mb-16">
-        <p className="mb-2">
-          {/* Hi, my name is <b>Ajay</b>, I am an experienced Full-Stack Web Developer
-        proficient in Next.js, React.js and Node.js. Skilled in building robust
-        web applications with a focus on responsive design and seamless user
-      experience using cutting-edge modern trending technologies. */}
-          I&apos;m <b>Ajay</b>, a Full-Stack Web Developer passionate about
+        <p className="mb-2 text-lg leading-relaxed  text-justify">
+          I&apos;m <b>Ajay</b>, a Full Stack Web Developer passionate about
           creating exceptional user experiences. I build user-friendly
           responsive web applications using modern technologies like Next.js,
           React.js, and Node.js. 
-          {/* You can also view my{" "}
-          <Link href="/ajay-gaur.pdf" target="_blank" underline="hover">
-            {" "}
-            resume{" "}
-          </Link>
-          . */}
         </p>
       </article>
-      {/* <p className="" >
-        You can connect with me on{" "}
-        <Link
-          href="https://linkedin.com/in/itsajaygaur"
-          target="_blank"
-          underline="always"
-          color="foreground"
-        >
-          LinkedIn
-        </Link>
-        , follow me on{" "}
-        <Link
-          href="https://twitter.com/itsajaygaur"
-          underline="always"
-          target="_blank"
-          color="foreground"
-        >
-          {" "}
-          Twitter{" "}
-        </Link>
-        , check out my{" "}
-        <Link
-          href="https://github.com/itsajaygaur"
-          color="foreground"
-          underline="always"
-          target="_blank"
-        >
-          Github
-        </Link> or can <Link href="mailto:ajaypathak2527@gmail.com" target="_blank" underline="always" color="foreground" > email </Link> me directly
-      </p> */}
+
 
       {/* Skills */}
-      <h2 className="text-xl font-semibold mb-4">Skills</h2>
+      <h2 className="text-xl font-bold mb-4">Skills</h2>
       <div className="flex flex-wrap gap-2 sm:gap-3 mb-16">
         {skills.map((skill) => (
           <Chip
             key={skill.id}
             startContent={<skill.skillIcon size={14} className="mr-0.5" />}
             variant="flat"
+            // size="lg"
+            radius="sm"
+            color="success"
             // color="secondary"
             className="pl-3"
           >
@@ -82,17 +46,20 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <h2 className="text-xl font-semibold">Projects</h2>
-      <p className="mb-4">
+      <h2 className="text-xl font-bold mb-4">Projects</h2>
+      {/* <p className="mb-4">
         Some of the projects are from work and some are on my own time.
-      </p>
+      </p> */}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
         {projects.map((project) => (
           <Card
             key={project.id}
-            shadow="sm"
-            className="p-6 hover:bg-gray-200/25 dark:hover:bg-gray-500/25"
+            // shadow="sm"
+            radius="sm"
+
+            // className="p-6 hover:bg-gray-200/25 dark:hover:bg-gray-500/25"
+            className="p-6 "
           >
             <CardHeader className="p-0 mb-2 font-semibold">
               {project.title}
@@ -138,7 +105,7 @@ export default function Home() {
       </div>
 
       {/* Contact Me */}
-      <h2 className="mb-4 text-xl font-semibold">Leave a message</h2>
+      <h2 className="mb-4 text-xl italic uppercase font-bold">Leave a message</h2>
       <ContactMe />
 
       <footer className="mt-12 md:mt-16 flex gap-6 ">

@@ -22,7 +22,7 @@ export default function ContactMe(){
             const res = await submitContactForm(data)
             if(res.success){
                 toast.success(res.message)
-                reset()
+                // reset()
                 return
             }
             toast.error(res.message || "Something went wrong. Try again later")
@@ -46,7 +46,7 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="name"
-                    render={({field}) => <Input {...field} size="sm" radius="md" variant="bordered" type="text" label="Name" isInvalid={!!errors.name?.message} errorMessage={errors.name?.message} /> }
+                    render={({field}) => <Input {...field} size="sm" radius="sm" variant="bordered" type="text" label="Name" isInvalid={!!errors.name?.message} errorMessage={errors.name?.message} /> }
                     />
                 {/* <ErrorMessage error={errors.name} /> */}
                 </div>
@@ -56,7 +56,7 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="email"
-                    render={({field}) => <Input {...field} size="sm" radius="md" variant="bordered" type="text" label="Email" isInvalid={!!errors.email?.message} errorMessage={errors.email?.message}  /> }
+                    render={({field}) => <Input {...field} size="sm" radius="sm" variant="bordered" type="text" label="Email" isInvalid={!!errors.email?.message} errorMessage={errors.email?.message}  /> }
                     />
                  {/* <ErrorMessage error={errors.email} /> */}
                     </div>
@@ -66,13 +66,13 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="message"
-                    render={({field}) => <Textarea {...field} size="sm" radius="md" variant="bordered" type="text" label="Message" isInvalid={!!errors.message?.message} errorMessage={errors.message?.message} /> }
+                    render={({field}) => <Textarea {...field} size="sm" radius="sm" variant="bordered" type="text" label="Message" isInvalid={!!errors.message?.message} errorMessage={errors.message?.message} /> }
                     />
                  {/* <ErrorMessage error={errors.message} /> */}
                     </div>
                 
                 
-                <Button isLoading={isSubmitting} type="submit" className="sm:col-span-2" variant="solid" >Send</Button>
+                <Button isLoading={isSubmitting}  type="submit" className="sm:col-span-2 data-[pressed=true]:scale-100 font-bold" radius="sm"   size="lg"  variant="solid" >Send</Button>
 
             </form>
         </section>

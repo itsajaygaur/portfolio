@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 
 import "./globals.css";
@@ -16,6 +16,11 @@ const poppins = Poppins({
   display: "swap",
   fallback: ["sans-serif"],
 });
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
@@ -67,10 +72,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${GeistSans.className} ${poppins.variable} `}>
+      <body className={`${jakarta.className} ${poppins.variable} `}>
         <ProvideTheme>
           <ProvideNextUI>
-            <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4" >
+            <main className="max-w-3xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4" >
             <Navbar />
               {children}
             </main>
