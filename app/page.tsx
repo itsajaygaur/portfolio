@@ -70,7 +70,7 @@ export default function Home() {
       <div className="flex flex-wrap gap-2 sm:gap-3 mb-16">
         {skills.map((skill) => (
           <Chip
-            key={skill.id}
+            key={skill.skillName}
             startContent={<skill.skillIcon size={14} className="mr-0.5" />}
             variant="flat"
             // color="secondary"
