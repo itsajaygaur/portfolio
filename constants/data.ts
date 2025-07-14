@@ -16,119 +16,105 @@ import { SiRedux } from "react-icons/si";
 import { SiPrisma } from "react-icons/si";
 import { FaLinux } from "react-icons/fa";
 import { FaAws } from "react-icons/fa";
-import { FaPython } from "react-icons/fa";
+import { FaGolang } from "react-icons/fa6";
+import { TbBrandReactNative } from "react-icons/tb";
 
 
 export const skills = [
   {
-    id: 1,
     skillName: "HTML",
     skillIcon: SiHtml5,
     category: "frontend",
   },
   {
-    id: 2,
     skillName: "CSS",
     skillIcon: SiCss3,
     category: "frontend",
   },
   {
-    id: 11,
+    skillName: "Javascript",
+    skillIcon: SiJavascript,
+  },
+  {
     skillName: "Typescript",
     skillIcon: SiTypescript,
     category: "backend",
   },
   {
-    id: 3,
-    skillName: "Javascript",
-    skillIcon: SiJavascript,
+    skillName: "Golang",
+    skillIcon: FaGolang,
   },
   {
-    id: 4,
     skillName: "React.js",
     skillIcon: SiReact,
     category: "frontend",
   },
   {
-    id: 5,
+    skillName: "React Native",
+    skillIcon: TbBrandReactNative,
+    category: "frontend",
+  },
+  {
     skillName: "Next.js",
     skillIcon: SiNextdotjs,
     category: "frontend",
   },
   {
-    id: 6,
     skillName: "Node.js",
     skillIcon: SiNodedotjs,
     category: "backend",
   },
   {
-    id: 6,
-    skillName: "Python",
-    skillIcon: FaPython,
-    // category: "backend",
-  },
-  {
-    id: 7,
     skillName: "Express.js",
     skillIcon: SiExpress,
     category: "backend",
   },
   {
-    id: 8,
     skillName: "MonogDB",
     skillIcon: SiMongodb,
     category: "backend",
   },
   {
-    id: 9,
     skillName: "Postgres",
     skillIcon: SiPostgresql,
     category: "backend",
   },
   {
-    id: 10,
     skillName: "MySQL",
     skillIcon: SiMysql,
     category: "backend",
   },
   {
-    id: 12,
     skillName: "Tailwind",
     skillIcon: SiTailwindcss,
     category: "frontend",
   },
   {
-    id: 13,
     skillName: "Git & Github",
     skillIcon: FaGitAlt,
     category: "devops",
   },
   {
-    id: 14,
     skillName: "Redis",
     skillIcon: SiRedis,
     category: "backend",
   },
   {
-    id: 15,
     skillName: "Redux",
     skillIcon: SiRedux,
     category: "frontend",
   },
   {
-    id: 16,
     skillName: "Prisma",
     skillIcon: SiPrisma,
     category: "backend",
   },
   {
-    id: 17,
     skillName: "Linux",
     skillIcon: FaLinux,
     category: "backend",
   },
   {
-    id: 18,
     skillName: "AWS",
     skillIcon: FaAws,
     category: "backend",
