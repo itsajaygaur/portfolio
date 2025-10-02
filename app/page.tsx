@@ -26,12 +26,12 @@ export default function Home() {
           creating exceptional user experiences. I build user-friendly
           responsive web applications using modern technologies like Next.js,
           React.js, and Node.js. 
-          {/* You can also view my{" "}
+          You can also view my{" "}
           <Link href="/ajay-gaur.pdf" target="_blank" underline="hover">
             {" "}
             resume{" "}
           </Link>
-          . */}
+          .
         </p>
       </article>
       {/* <p className="" >
