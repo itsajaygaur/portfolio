@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 
 import Link from "next/link";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 
 
 export default function Navbar(){
