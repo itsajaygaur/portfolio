@@ -1,4 +1,4 @@
-import { SiJavascript } from "react-icons/si";
+import { SiFastapi, SiJavascript } from "react-icons/si";
 import { SiHtml5 } from "react-icons/si";
 import { SiCss3 } from "react-icons/si";
 import { SiReact } from "react-icons/si";
@@ -9,7 +9,7 @@ import { SiTailwindcss } from "react-icons/si";
 import { SiMongodb } from "react-icons/si";
 import { SiPostgresql } from "react-icons/si";
 import { SiMysql } from "react-icons/si";
-import { FaGitAlt } from "react-icons/fa";
+import { FaDocker, FaGitAlt } from "react-icons/fa";
 import { SiRedis } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiRedux } from "react-icons/si";
@@ -18,6 +18,10 @@ import { FaLinux } from "react-icons/fa";
 import { FaAws } from "react-icons/fa";
 import { FaGolang } from "react-icons/fa6";
 import { TbBrandReactNative } from "react-icons/tb";
+import { FaPython } from "react-icons/fa";
+import { SiLangchain } from "react-icons/si";
+import { RiAiGenerate2 } from "react-icons/ri";
+
 
 
 export const skills = [
@@ -38,6 +42,11 @@ export const skills = [
   {
     skillName: "Typescript",
     skillIcon: SiTypescript,
+    category: "backend",
+  },
+  {
+    skillName: "Python",
+    skillIcon: FaPython,
     category: "backend",
   },
   {
@@ -62,6 +71,11 @@ export const skills = [
   {
     skillName: "Node.js",
     skillIcon: SiNodedotjs,
+    category: "backend",
+  },
+  {
+    skillName: "FastAPI",
+    skillIcon: SiFastapi,
     category: "backend",
   },
   {
@@ -117,6 +131,21 @@ export const skills = [
   {
     skillName: "AWS",
     skillIcon: FaAws,
+    category: "backend",
+  },
+  {
+    skillName: "Docker",
+    skillIcon: FaDocker,
+    category: "backend",
+  },
+  {
+    skillName: "Langchain",
+    skillIcon: SiLangchain,
+    category: "backend",
+  },
+  {
+    skillName: "Gen AI",
+    skillIcon: RiAiGenerate2,
     category: "backend",
   },
 ];
@@ -211,5 +240,13 @@ export const projects = [
     img: "/tictactoe.jpeg",
     link: "https://gameofsnake.vercel.app/",
     github: "https://github.com/itsajaygaur/snake-game",
+  },
+  {
+    id: 13,
+    title: "Next-Gen AI Voice Translator",
+    description: "An AI-powered voice translation app built with Next.js for fast and accurate real-time language conversion.",
+    img: "/tictactoe.jpeg",
+    link: "https://nao-translator-lime.vercel.app",
+    github: "https://github.com/itsajaygaur/nao-translator",
   },
 ];

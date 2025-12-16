@@ -1,5 +1,5 @@
 "use client"
-import { Input, Button, Textarea } from "@nextui-org/react"
+// import { Input, Button, Textarea } from "@nextui-org/react"
 import { useForm, Controller } from "react-hook-form"
 import { ContactForm } from "@/types/form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -46,7 +46,7 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="name"
-                    render={({field}) => <Input {...field} size="sm" radius="md" variant="bordered" type="text" label="Name" isInvalid={!!errors.name?.message} errorMessage={errors.name?.message} /> }
+                    render={({field}) => <input {...field} type="text" placeholder="Name" className="ring ring-gray-200 py-2 px-3 w-full rounded-sm dark:ring-gray-700 " required /> }
                     />
                 {/* <ErrorMessage error={errors.name} /> */}
                 </div>
@@ -56,7 +56,7 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="email"
-                    render={({field}) => <Input {...field} size="sm" radius="md" variant="bordered" type="text" label="Email" isInvalid={!!errors.email?.message} errorMessage={errors.email?.message}  /> }
+                    render={({field}) => <input {...field} type="email" placeholder="Email" className="ring ring-gray-200 py-2 px-3 w-full rounded-sm dark:ring-gray-700" required /> }
                     />
                  {/* <ErrorMessage error={errors.email} /> */}
                     </div>
@@ -66,13 +66,22 @@ export default function ContactMe(){
                 <Controller
                     control={control}
                     name="message"
-                    render={({field}) => <Textarea {...field} size="sm" radius="md" variant="bordered" type="text" label="Message" isInvalid={!!errors.message?.message} errorMessage={errors.message?.message} /> }
+                    render={({field}) => <textarea {...field} placeholder="Message" className="ring h-full ring-gray-200 py-2 px-3 w-full rounded-sm dark:ring-gray-700" required /> }
                     />
                  {/* <ErrorMessage error={errors.message} /> */}
                     </div>
                 
                 
-                <Button isLoading={isSubmitting} type="submit" className="sm:col-span-2" variant="solid" >Send</Button>
+                <button 
+                    type="submit" 
+                    className="w-full text-sm bg-black/80 hover:bg-black/85 transition-all text-white py-2.5 px-5 max-w-fit rounded-md dark:bg-white/80 dark:hover:bg-white/85 dark:text-black disabled:bg-gray-200 disabled:text-gray-400 dark:disabled:bg-zinc-800 dark:disabled:text-zinc-400"
+                    disabled={isSubmitting}
+
+                >
+                    {
+                        isSubmitting ? "Sending..." : "Send"
+                    }
+                </button>
 
             </form>
         </section>
