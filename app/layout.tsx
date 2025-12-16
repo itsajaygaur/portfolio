@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
-import { GeistSans } from "geist/font/sans";
+import { Inter, Poppins, Lexend } from "next/font/google";
+// import { GeistSans } from "geist/font/sans";
 
 import "./globals.css";
-import { ProvideTheme, ProvideNextUI } from "./providers";
+import { ProvideTheme } from "./providers";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/nav";
 
@@ -13,6 +13,14 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-poppins",
+  display: "swap",
+  fallback: ["sans-serif"],
+});
+
+const lexend = Lexend({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-lexend",
   display: "swap",
   fallback: ["sans-serif"],
 });
@@ -67,15 +75,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${GeistSans.className} ${poppins.variable} `}>
+      <body className={` ${lexend.className} `}>
         <ProvideTheme>
-          <ProvideNextUI>
             <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4" >
             <Navbar />
               {children}
             </main>
             <Toaster />
-          </ProvideNextUI>
         </ProvideTheme>
       </body>
     </html>

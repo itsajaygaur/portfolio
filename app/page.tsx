@@ -1,175 +1,114 @@
 import ContactMe from "@/components/contact-me";
 import { projects, skills } from "@/constants/data";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Chip,
-  Link,
-} from "@nextui-org/react";
-import { FaExternalLinkSquareAlt, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaExternalLinkSquareAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
 export default function Home() {
   return (
-    <main>
-      {/* About me */}
-      <article className="mb-16">
-        <p className="mb-2">
-          {/* Hi, my name is <b>Ajay</b>, I am an experienced Full-Stack Web Developer
-        proficient in Next.js, React.js and Node.js. Skilled in building robust
-        web applications with a focus on responsive design and seamless user
-      experience using cutting-edge modern trending technologies. */}
-          I&apos;m <b>Ajay</b>, a Full-Stack Web Developer passionate about
-          creating exceptional user experiences. I build user-friendly
-          responsive web applications using modern technologies like Next.js,
-          React.js, and Node.js. 
-          You can also view my{" "}
-          <Link href="/ajay-gaur.pdf" target="_blank" underline="hover">
-            {" "}
-            resume{" "}
-          </Link>
-          .
+    <main className="max-w-3xl mx-auto">
+
+      {/* ABOUT SECTION */}
+      <section className="mb-16">
+        <p className="text-[15px] leading-7 text-gray-700 dark:text-gray-300">
+          Hi My name is <b>Ajay</b>, I&apos;m a full-stack engineer with 3+ years of experience building scalable applications using React.js, Next.js, TypeScript, Python, Node.js, Postgres, AWS and more. My work spans frontend design & architecture, backend development, database design, cloud deployments, CI/CD pipelines, and performance optimization. I&apos;m known for clean coding, quick problem-solving, and taking complete ownership of features from idea to production.
+
+          Check my{" "}
+          <a
+            href="/ajay-gaur.pdf"
+            target="_blank"
+            className="underline text-blue-500 hover:text-blue-600"
+          >
+            resume
+          </a>.
         </p>
-      </article>
-      {/* <p className="" >
-        You can connect with me on{" "}
-        <Link
-          href="https://linkedin.com/in/itsajaygaur"
-          target="_blank"
-          underline="always"
-          color="foreground"
-        >
-          LinkedIn
-        </Link>
-        , follow me on{" "}
-        <Link
-          href="https://twitter.com/itsajaygaur"
-          underline="always"
-          target="_blank"
-          color="foreground"
-        >
-          {" "}
-          Twitter{" "}
-        </Link>
-        , check out my{" "}
-        <Link
-          href="https://github.com/itsajaygaur"
-          color="foreground"
-          underline="always"
-          target="_blank"
-        >
-          Github
-        </Link> or can <Link href="mailto:ajaypathak2527@gmail.com" target="_blank" underline="always" color="foreground" > email </Link> me directly
-      </p> */}
+      </section>
 
-      {/* Skills */}
-      <h2 className="text-xl font-semibold mb-4">Skills</h2>
-      <div className="flex flex-wrap gap-2 sm:gap-3 mb-16">
-        {skills.map((skill) => (
-          <Chip
-            key={skill.skillName}
-            startContent={<skill.skillIcon size={14} className="mr-0.5" />}
-            variant="flat"
-            // color="secondary"
-            className="pl-3"
-          >
-            {skill.skillName}
-          </Chip>
-        ))}
-      </div>
+      {/* SKILLS */}
+      <section className="mb-16">
+        <h2 className="text-xl font-semibold mb-4">Skills</h2>
 
-      {/* Projects */}
-      <h2 className="text-xl font-semibold">Projects</h2>
-      <p className="mb-4">
-        Some of the projects are from work and some are on my own time.
-      </p>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <div
+              key={skill.skillName}
+              className="px-3 py-1 bg-gray-200 dark:bg-zinc-700 rounded-full text-sm flex items-center gap-1"
+            >
+              <skill.skillIcon size={14} />
+              {skill.skillName}
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-16">
-        {projects.map((project) => (
-          <Card
-            key={project.id}
-            shadow="sm"
-            className="p-6 hover:bg-gray-200/25 dark:hover:bg-gray-500/25"
-          >
-            <CardHeader className="p-0 mb-2 font-semibold">
-              {project.title}
-            </CardHeader>
-            <CardBody className="p-0 mb-6">
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-3">
+      {/* PROJECTS */}
+      <section className="mb-16">
+        <h2 className="text-xl font-semibold mb-4">Projects</h2>
+        {/* <p className="mb-4 text-gray-600 dark:text-gray-400">
+          Some projects are from work, others are personal experiments.
+        </p> */}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="p-5 rounded-xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <h3 className="font-semibold mb-2">{project.title}</h3>
+
+              <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 mb-4">
                 {project.description}
-                {/* A fully featured open source ecommerce platform with admin panel built with Next.js. */}
               </p>
-            </CardBody>
 
-            <CardFooter className="p-0 overflow-visible">
-              <div className="flex gap-6 items-center">
-                <Link
-                  showAnchorIcon
-                  anchorIcon={<FaExternalLinkSquareAlt className="ml-1" />}
-                  underline="hover"
+              <div className="flex gap-5 text-sm">
+                <a
                   href={project.link}
                   target="_blank"
-                  color="primary"
-                  className=" text-sm"
+                  className="flex items-center hover:text-blue-600"
                 >
-                  {/* <FaExternalLinkSquareAlt className="mr-1" /> */}
-                  View live
-                </Link>
+                  Live
+                  <FaExternalLinkSquareAlt className="ml-1" />
+                </a>
+
                 {project.github && (
-                  <Link
-                    showAnchorIcon
-                    anchorIcon={<FaGithub className="ml-1" />}
-                    underline="hover"
-                    href={project?.github}
+                  <a
+                    href={project.github}
                     target="_blank"
-                    className="text-sm"
+                    className="flex items-center hover:text-blue-600"
                   >
-                    {/* <FaGithub className="mr-1" /> */}
-                    View code
-                  </Link>
+                    Code
+                    <FaGithub className="ml-1" />
+                  </a>
                 )}
               </div>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      {/* Contact Me */}
-      <h2 className="mb-4 text-xl font-semibold">Leave a message</h2>
-      <ContactMe />
+      {/* CONTACT FORM */}
+      <section>
+        <h2 className="text-xl font-semibold mb-4">Leave a message</h2>
+        <ContactMe />
+      </section>
 
-      <footer className="mt-12 md:mt-16 flex gap-6 ">
-        <Link
-          href="https://github.com/itsajaygaur"
-          color="foreground"
-          target="_blank"
-        >
-          <FaGithub size={20} />
-        </Link>
-        <Link
-          href="https://linkedin.com/in/itsajaygaur"
-          color="foreground"
-          target="_blank"
-        >
-          <FaLinkedin size={20} />
-        </Link>
-        <Link
-          href="https://twitter.com/itsajaygaur"
-          color="foreground"
-          target="_blank"
-        >
-          <FaXTwitter size={20} />
-        </Link>
-        <Link
-          href="mailto:ajaypathak2527@gmail.com"
-          color="foreground"
-          target="_blank"
-        >
-          <MdEmail size={20} />
-        </Link>
+      {/* FOOTER */}
+      <footer className="mt-14 flex gap-6">
+        <a href="https://github.com/itsajaygaur" target="_blank">
+          <FaGithub size={22} />
+        </a>
+
+        <a href="https://linkedin.com/in/itsajaygaur" target="_blank">
+          <FaLinkedin size={22} />
+        </a>
+
+        <a href="https://twitter.com/itsajaygaur" target="_blank">
+          <FaXTwitter size={22} />
+        </a>
+
+        <a href="mailto:ajaypathak2527@gmail.com" target="_blank">
+          <MdEmail size={22} />
+        </a>
       </footer>
     </main>
   );

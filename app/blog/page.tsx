@@ -1,5 +1,5 @@
 import { getBlogs } from "@/lib/blogs"
-import { Link } from "@nextui-org/react";
+import { Link } from "@heroui/react";
 
 export const metadata = {
     title: 'Blog',

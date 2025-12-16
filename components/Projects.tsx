@@ -1,6 +1,6 @@
-import {Card, CardBody, CardFooter} from "@nextui-org/react";
+import {Card, CardBody, CardFooter} from "@heroui/react";
 import Image from "next/image";
-import { Link } from "@nextui-org/react";
+import { Link } from "@heroui/react";
 import { FaGithub } from "react-icons/fa";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
 import { projects } from "@/constants/data";
