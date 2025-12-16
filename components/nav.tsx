@@ -1,7 +1,8 @@
+"use client"
 import ThemeToggler from "@/components/theme-toggler";
-import {
-  Button, Link as NextUiLink,
-} from "@nextui-org/react";
+// import {
+//   Button, Link as NextUiLink,
+// } from "@heroui/react";
 import {
   FaGithub,
   FaLinkedinIn,
@@ -14,25 +15,19 @@ export default function Navbar(){
           <Link href="/" >
             <h1 className="text-lg font-semibold"> Ajay</h1>
           </Link>
-        <div className="space-x-1">
-          <NextUiLink
-            color="foreground"
-            target="_blank"
-            href="https://github.com/itsajaygaur"
-          >
-            <Button variant="light" isIconOnly>
-              <FaGithub size={18} />
-            </Button>
-          </NextUiLink>
-          {/* <Link
-            color="foreground"
+        <div className="flex items-center gap-4">
+          <a
             target="_blank"
             href="https://www.linkedin.com/in/itsajaygaur"
           >
-            <Button variant="light" isIconOnly>
-              <FaLinkedinIn size={18} />
-            </Button>
-          </Link> */}
+              <FaLinkedinIn className="size-4.5" />
+          </a>
+          <a
+            target="_blank"
+            href="https://github.com/itsajaygaur"
+          >
+              <FaGithub className="size-4.5" />
+          </a>
           <ThemeToggler />
         </div>
       </nav>
