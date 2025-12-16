@@ -249,4 +249,11 @@ export const projects = [
     link: "https://nao-translator-lime.vercel.app",
     github: "https://github.com/itsajaygaur/nao-translator",
   },
+  {
+    id: 14,
+    title: "Best Medical University Services",
+    description: "A feature-rich Next.js platform where all site content is dynamically managed using Sanity CMS for easy updates and scalability.",
+    img: "/tictactoe.jpeg",
+    link: "https://bmus.co.in",
+  },
 ];
