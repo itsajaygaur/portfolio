@@ -1,5 +1,5 @@
 import { skills } from "@/constants/data";
-import { Button } from "@heroui/react";
+// import { Button } from "@heroui/react";
 
 
 export default function Skills(){
@@ -10,10 +10,10 @@ export default function Skills(){
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 sm:gap-4 " >
             {
                 skills.map(skill => (
-                    <Button key={skill.skillName} variant="flat" className=" cursor-default px-6 py-16  rounded-lg text-center flex flex-col justify-center items-center gap-4" >
+                    <button key={skill.skillName} className=" cursor-default px-6 py-16  rounded-lg text-center flex flex-col justify-center items-center gap-4" >
                         <skill.skillIcon className="flex-none" size="32" />
                         <p className="text-xl" >{skill.skillName}</p>
-                    </Button>
+                    </button>
                 ))
             }
             </div>

@@ -1,5 +1,4 @@
 import { getBlogs } from "@/lib/blogs"
-import { Link } from "@heroui/react";
 
 export const metadata = {
     title: 'Blog',
@@ -21,9 +20,9 @@ export default async function Blog(){
                 blogs.map(blog => (
                     <div key={blog?.slug} >
 
-                    <Link color="foreground" underline="hover" href={`/blog/${blog?.slug}`} key={blog?.slug} className="" >
+                    <a href={`/blog/${blog?.slug}`} key={blog?.slug} className="" >
                         <h3 className="text-lg font-semibold" >{blog?.frontmatter.title}</h3>
-                    </Link>
+                    </a>
                         <p>{blog?.frontmatter.summary}</p>
                     </div>
                 ))
