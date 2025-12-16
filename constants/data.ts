@@ -252,7 +252,7 @@ export const projects = [
   {
     id: 14,
     title: "Best Medical University Services",
-    description: "A feature-rich Next.js platform where all site content is dynamically managed using Sanity CMS for easy updates and scalability.",
+    description: "A modern web application built with Next.js, with all content seamlessly managed through Sanity CMS.",
     img: "/tictactoe.jpeg",
     link: "https://bmus.co.in",
   },
