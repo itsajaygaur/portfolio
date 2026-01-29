@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Poppins, Lexend } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 // import { GeistSans } from "geist/font/sans";
 
 import "./globals.css";
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     "ajay",
     "ajay gaur",
     "full stack developer",
-    "frontend developer"
+    "frontend developer",
   ],
   twitter: {
     card: "summary_large_image",
@@ -54,9 +55,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   authors: [
@@ -77,12 +78,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={` ${lexend.className} `}>
         <ProvideTheme>
-            <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4" >
+          <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4">
             <Navbar />
-              {children}
-            </main>
-            <Toaster />
+            {children}
+            <Analytics />
+          </main>
+          <Toaster />
         </ProvideTheme>
+        <Analytics />
       </body>
     </html>
   );
