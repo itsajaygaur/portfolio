@@ -1,8 +1,4 @@
-"use client"
 import ThemeToggler from "@/components/theme-toggler";
-// import {
-//   Button, Link as NextUiLink,
-// } from "@heroui/react";
 import {
   FaGithub,
   FaLinkedinIn,

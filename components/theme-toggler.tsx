@@ -1,16 +1,11 @@
 "use client";
 import { useTheme } from "next-themes";
-import { useCallback } from "react";
-// import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@heroui/react";
-import { MdOutlineWbSunny } from "react-icons/md";
-import { RiMoonClearFill } from "react-icons/ri";
-
 const ThemeToggler = () => {
-  const { setTheme, resolvedTheme, theme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
 
-  const toggleTheme = useCallback(() => {
+  const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  }, [resolvedTheme, setTheme]);
+  };
 
   return (
     <button

@@ -1,7 +1,2 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
-
-
-[data-slot="content"] {
-    min-width: 125px !important;
-}
