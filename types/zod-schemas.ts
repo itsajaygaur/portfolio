@@ -5,3 +5,5 @@ export const contactFormSchema = z.object({
     email: z.email().trim().min(1, {message: 'This field is required.'}),
     message: z.string().trim().min(1, {message: 'This field is required.'})
 })
+
+export type ContactForm = z.infer<typeof contactFormSchema>

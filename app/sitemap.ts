@@ -1,13 +1,12 @@
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
-export default function sitemap() {
+export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl = getSiteUrl();
+
   return [
     {
-      url: BASE_URL,
-      priority: 1,
-    },
-    {
-      url: BASE_URL + "/v2",
+      url: siteUrl.toString(),
       priority: 1,
     },
   ];
