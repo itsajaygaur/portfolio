@@ -44,9 +44,6 @@ export default function Home() {
       {/* PROJECTS */}
       <section className="mb-16">
         <h2 className="text-xl font-semibold mb-4">Projects</h2>
-        {/* <p className="mb-4 text-gray-600 dark:text-gray-400">
-          Some projects are from work, others are personal experiments.
-        </p> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {projects.map((project) => (
