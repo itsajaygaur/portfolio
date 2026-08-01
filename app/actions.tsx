@@ -1,6 +1,6 @@
 "use server"
 
-import { ContactForm } from "@/types/form";
+import type { ContactForm } from "@/types/zod-schemas";
 
 type EmailTo = {
     email: string
@@ -19,12 +19,12 @@ export async function submitContactForm(data: ContactForm){
     try {
 
         const result = await Promise.all([
-            await sendEmail({
+            sendEmail({
               params: { NAME: data.name },
               templateId: 1,
               to: [{ email: data.email }],
             }),
-            await sendEmail({
+            sendEmail({
               params: { NAME: data.name, EMAIL: data.email, MESSAGE: data.message },
               templateId: 2,
               to: [{ email: "ajaypathak2527@gmail.com" }],
@@ -41,8 +41,7 @@ export async function submitContactForm(data: ContactForm){
 
           return {success: false, message: 'There was an error sending your message.' };
         
-    } catch (error) {
-        // console.log(error)
+    } catch {
         return {success: false, message: "Something went wrong. Try again later."}
     }
 }
@@ -70,4 +69,3 @@ async function sendEmail(emailOptions: EmailOptions){
     const data = await response.json()
     return data
   }
-  

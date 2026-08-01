@@ -1,33 +1,24 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, Lexend } from "next/font/google";
+import { Lexend } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-// import { GeistSans } from "geist/font/sans";
 
 import "./globals.css";
 import { ProvideTheme } from "./providers";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/nav";
+import { getSiteUrl } from "@/lib/site-url";
 
-// const inter = Inter({ subsets: ['latin'] })
-
-const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
-  display: "swap",
-  fallback: ["sans-serif"],
-});
+const siteUrl = getSiteUrl();
 
 const lexend = Lexend({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-lexend",
   display: "swap",
   fallback: ["sans-serif"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
+  metadataBase: siteUrl,
   title: {
     default: "Ajay Gaur - Full Stack Developer",
     template: "%s | Ajay Gaur",
@@ -47,7 +38,7 @@ export const metadata: Metadata = {
     creator: "@itsajaygaur",
     title: "Ajay Gaur",
     description: "Personal portfolio website of Ajay Gaur built with Next.js",
-    images: [`${process.env.NEXT_PUBLIC_BASE_URL!}/opengraph-image.png`],
+    images: [new URL("/opengraph-image.png", siteUrl)],
   },
   robots: {
     index: true,
@@ -63,7 +54,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Ajay Gaur",
-      url: process.env.NEXT_PUBLIC_BASE_URL,
+      url: siteUrl,
     },
   ],
   creator: "Ajay Gaur",
@@ -81,7 +72,6 @@ export default function RootLayout({
           <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4">
             <Navbar />
             {children}
-            <Analytics />
           </main>
           <Toaster />
         </ProvideTheme>
