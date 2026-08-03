@@ -1,112 +1,204 @@
 import ContactMe from "@/components/contact-me";
-import { projects, skills } from "@/constants/data";
-import { FaGithub, FaLinkedin, FaExternalLinkSquareAlt } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { projects } from "@/constants/data";
+import {
+  FaArrowDown,
+  FaArrowUpRightFromSquare,
+  FaGithub,
+  FaLinkedinIn,
+} from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+
+const capabilities = [
+  {
+    number: "01",
+    title: "Frontend",
+    description:
+      "Polished, accessible interfaces with thoughtful motion and durable component systems.",
+    tools: "React · Next.js · TypeScript · Tailwind CSS",
+  },
+  {
+    number: "02",
+    title: "Backend",
+    description:
+      "Reliable APIs, data models, and services designed around real product needs.",
+    tools: "Node.js · Python · Go · Postgres · Redis",
+  },
+  {
+    number: "03",
+    title: "Infrastructure",
+    description:
+      "Practical systems that move confidently from a local build to production scale.",
+    tools: "AWS · Docker · Linux · CI/CD",
+  },
+];
+
+const socials = [
+  {
+    label: "GitHub",
+    href: "https://github.com/itsajaygaur",
+    icon: FaGithub,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/itsajaygaur",
+    icon: FaLinkedinIn,
+  },
+  {
+    label: "Email",
+    href: "mailto:ajaypathak2527@gmail.com",
+    icon: MdEmail,
+  },
+];
 
 export default function Home() {
   return (
-    <main className="max-w-3xl mx-auto">
+    <>
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="hero__eyebrow reveal">
+          <span className="status-dot" aria-hidden="true" />
+          Available for thoughtful collaborations
+        </div>
 
-      {/* ABOUT SECTION */}
-      <section className="mb-16">
-        <p className="text-[15px] leading-7 text-gray-700 dark:text-gray-300">
-          Hi My name is <b>Ajay</b>, I&apos;m a full-stack engineer with 3+ years of experience building scalable applications using React.js, Next.js, TypeScript, Python, Node.js, Postgres, AWS and more. My work spans frontend design & architecture, backend development, database design, cloud deployments, CI/CD pipelines, and performance optimization. I&apos;m known for clean coding, quick problem-solving, and taking complete ownership of features from idea to production.
+        <div className="hero__grid">
+          <div className="hero__main reveal reveal--delay-1">
+            <h1 id="hero-title">
+              I design &amp; build digital products that feel <em>simple.</em>
+            </h1>
+          </div>
 
-          Check my{" "}
-          <a
-            href="/ajay-gaur.pdf"
-            target="_blank"
-            className="underline text-blue-500 hover:text-blue-600"
-          >
-            resume
-          </a>.
-        </p>
-      </section>
-
-      {/* SKILLS */}
-      <section className="mb-16">
-        <h2 className="text-xl font-semibold mb-4">Skills</h2>
-
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <div
-              key={skill.skillName}
-              className="px-3 py-1 bg-gray-200 dark:bg-zinc-700 rounded-full text-sm flex items-center gap-1"
-            >
-              <skill.skillIcon size={14} />
-              {skill.skillName}
+          <div className="hero__aside reveal reveal--delay-2">
+            <p>
+              I&apos;m Ajay, a full-stack engineer turning ambitious ideas into
+              clear, reliable products—from interface to infrastructure.
+            </p>
+            <div className="hero__actions">
+              <a className="button button--primary" href="#work">
+                Explore my work
+                <FaArrowDown aria-hidden="true" />
+              </a>
+              <a
+                className="text-link"
+                href="/ajay-gaur.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View résumé
+                <FaArrowUpRightFromSquare aria-hidden="true" />
+              </a>
             </div>
-          ))}
+          </div>
+        </div>
+
+        <div className="hero__meta reveal reveal--delay-3" aria-label="Profile details">
+          <div>
+            <span>Experience</span>
+            <strong>3+ years</strong>
+          </div>
+          <div>
+            <span>Focus</span>
+            <strong>Product engineering</strong>
+          </div>
+          <div>
+            <span>Based in</span>
+            <strong>India · Working globally</strong>
+          </div>
         </div>
       </section>
 
-      {/* PROJECTS */}
-      <section className="mb-16">
-        <h2 className="text-xl font-semibold mb-4">Projects</h2>
+      <section className="section" id="work" aria-labelledby="work-title">
+        <div className="section-heading">
+          <div>
+            <p className="kicker">Selected work</p>
+            <h2 id="work-title">Built to be useful.</h2>
+          </div>
+          <p>
+            A mix of product experiments, client work, and tools built to solve
+            real problems.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="p-5 rounded-xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <h3 className="font-semibold mb-2">{project.title}</h3>
-
-              <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 mb-4">
-                {project.description}
-              </p>
-
-              <div className="flex gap-5 text-sm">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  className="flex items-center hover:text-blue-600"
-                >
-                  Live
-                  <FaExternalLinkSquareAlt className="ml-1" />
-                </a>
-
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    className="flex items-center hover:text-blue-600"
-                  >
-                    Code
-                    <FaGithub className="ml-1" />
-                  </a>
-                )}
+        <div className="project-list">
+          {projects.map((project, index) => (
+            <article className="project" key={project.id}>
+              <span className="project__number" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className="project__content">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
               </div>
-            </div>
+              <div className="project__links" aria-label={`${project.title} links`}>
+                <a href={project.link} target="_blank" rel="noreferrer">
+                  Live site
+                  <FaArrowUpRightFromSquare aria-hidden="true" />
+                </a>
+                {project.github ? (
+                  <a href={project.github} target="_blank" rel="noreferrer">
+                    Source
+                    <FaGithub aria-hidden="true" />
+                  </a>
+                ) : null}
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* CONTACT FORM */}
-      <section>
-        <h2 className="text-xl font-semibold mb-4">Leave a message</h2>
+      <section className="section expertise" id="expertise" aria-labelledby="expertise-title">
+        <div className="section-heading section-heading--compact">
+          <div>
+            <p className="kicker">How I work</p>
+            <h2 id="expertise-title">Across the whole stack.</h2>
+          </div>
+        </div>
+
+        <div className="capability-grid">
+          {capabilities.map((capability) => (
+            <article className="capability" key={capability.number}>
+              <span>{capability.number}</span>
+              <h3>{capability.title}</h3>
+              <p>{capability.description}</p>
+              <small>{capability.tools}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="contact" id="contact" aria-labelledby="contact-title">
+        <div className="contact__intro">
+          <p className="kicker">Let&apos;s make something good</p>
+          <h2 id="contact-title">Have an idea in mind?</h2>
+          <p>
+            Tell me what you&apos;re working on, what&apos;s getting in the way, or
+            simply say hello. I&apos;ll get back to you soon.
+          </p>
+          <a href="mailto:ajaypathak2527@gmail.com">
+            ajaypathak2527@gmail.com
+          </a>
+        </div>
         <ContactMe />
       </section>
 
-      {/* FOOTER */}
-      <footer className="mt-14 flex gap-6">
-        <a href="https://github.com/itsajaygaur" target="_blank">
-          <FaGithub size={22} />
-        </a>
-
-        <a href="https://linkedin.com/in/itsajaygaur" target="_blank">
-          <FaLinkedin size={22} />
-        </a>
-
-        <a href="https://twitter.com/itsajaygaur" target="_blank">
-          <FaXTwitter size={22} />
-        </a>
-
-        <a href="mailto:ajaypathak2527@gmail.com" target="_blank">
-          <MdEmail size={22} />
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} Ajay Gaur</p>
+        <div className="footer__links">
+          {socials.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel={social.href.startsWith("http") ? "noreferrer" : undefined}
+              aria-label={social.label}
+            >
+              <social.icon aria-hidden="true" />
+              <span>{social.label}</span>
+            </a>
+          ))}
+        </div>
+        <a className="back-to-top" href="#top">
+          Back to top ↑
         </a>
       </footer>
-    </main>
+    </>
   );
 }
