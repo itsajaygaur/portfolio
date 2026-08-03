@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lexend } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
@@ -10,35 +10,48 @@ import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
 
-const lexend = Lexend({
-  weight: ["300", "400", "500", "600", "700"],
+const geist = Geist({
   subsets: ["latin"],
   display: "swap",
-  fallback: ["sans-serif"],
+  fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: "Ajay Gaur - Full Stack Developer",
+    default: "Ajay Gaur — Full-stack Engineer",
     template: "%s | Ajay Gaur",
   },
-  description: "Personal portfolio website of Ajay Gaur built with Next.js",
+  description:
+    "Ajay Gaur is a full-stack engineer designing and building thoughtful digital products from interface to infrastructure.",
   keywords: [
-    "next.js",
-    "react",
-    "react server components",
-    "ajay",
-    "ajay gaur",
-    "full stack developer",
-    "frontend developer",
+    "Ajay Gaur",
+    "full-stack engineer",
+    "product engineer",
+    "Next.js developer",
+    "React developer",
   ],
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "Ajay Gaur — Full-stack Engineer",
+    description: "Designing and building thoughtful digital products.",
+    siteName: "Ajay Gaur",
+    images: [
+      {
+        url: new URL("/og.png", siteUrl),
+        width: 1200,
+        height: 630,
+        alt: "Ajay Gaur — Full-stack engineer",
+      },
+    ],
+  },
   twitter: {
     card: "summary_large_image",
     creator: "@itsajaygaur",
-    title: "Ajay Gaur",
-    description: "Personal portfolio website of Ajay Gaur built with Next.js",
-    images: [new URL("/opengraph-image.png", siteUrl)],
+    title: "Ajay Gaur — Full-stack Engineer",
+    description: "Designing and building thoughtful digital products.",
+    images: [new URL("/og.png", siteUrl)],
   },
   robots: {
     index: true,
@@ -51,29 +64,23 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  authors: [
-    {
-      name: "Ajay Gaur",
-      url: siteUrl,
-    },
-  ],
+  authors: [{ name: "Ajay Gaur", url: siteUrl }],
   creator: "Ajay Gaur",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={` ${lexend.className} `}>
+      <body className={geist.className}>
         <ProvideTheme>
-          <main className="max-w-2xl mx-auto pt-5 sm:pt-10 pb-10 sm:pb-20 max-md:px-4">
+          <a className="skip-link" href="#main-content">
+            Skip to content
+          </a>
+          <div className="page-shell">
             <Navbar />
-            {children}
-          </main>
-          <Toaster />
+            <main id="main-content">{children}</main>
+          </div>
+          <Toaster position="bottom-center" />
         </ProvideTheme>
         <Analytics />
       </body>
