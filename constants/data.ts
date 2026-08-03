@@ -129,6 +129,13 @@ export const skills = [
 
 export const projects = [
   {
+    id: 15,
+    title: "TraceVista",
+    description: "A privacy-first OpenTelemetry trace inspector that turns OTLP exports into interactive waterfalls, service maps, and performance insights entirely in the browser.",
+    link: "https://tracevista.vercel.app",
+    github: "https://github.com/itsajaygaur/tracevista",
+  },
+  {
     id: 1,
     title: "Mykart - Ecommerce store",
     description: "A fully feature ecommerce store with admin panel and payments built with Next.js",
