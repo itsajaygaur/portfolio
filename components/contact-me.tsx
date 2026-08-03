@@ -1,81 +1,117 @@
-"use client"
-import { useForm, Controller } from "react-hook-form"
-import type { ContactForm } from "@/types/zod-schemas"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { contactFormSchema } from "@/types/zod-schemas"
-import { submitContactForm } from "@/app/actions"
-import toast from "react-hot-toast"
- 
-export default function ContactMe(){
+"use client";
 
-    const { handleSubmit, control, reset, formState: {isSubmitting} } = useForm<ContactForm>({resolver: zodResolver(contactFormSchema), defaultValues: {
-        name: "",
-        email: "",
-        message: ""
-    } })
+import { Controller, useForm } from "react-hook-form";
+import type { ContactForm } from "@/types/zod-schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { contactFormSchema } from "@/types/zod-schemas";
+import { submitContactForm } from "@/app/actions";
+import toast from "react-hot-toast";
 
+export default function ContactMe() {
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ContactForm>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: { name: "", email: "", message: "" },
+  });
 
-    async function onSubmit(data: ContactForm ){
-        try {
-            const res = await submitContactForm(data)
-            if(res.success){
-                toast.success(res.message)
-                reset()
-                return
-            }
-            toast.error(res.message || "Something went wrong. Try again later")
-            
-        } catch {
-            toast.error("Something went wrong. Try again later")
-        }
-    }   
+  async function onSubmit(data: ContactForm) {
+    try {
+      const response = await submitContactForm(data);
 
-    return(
-        <section className=" " >
-            <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 sm:grid-cols-2  gap-4" >
-                
+      if (response.success) {
+        toast.success(response.message);
+        reset();
+        return;
+      }
 
+      toast.error(response.message || "Something went wrong. Try again later.");
+    } catch {
+      toast.error("Something went wrong. Try again later.");
+    }
+  }
 
-                <div className="" >
+  return (
+    <form className="contact-form" onSubmit={handleSubmit(onSubmit)} noValidate>
+      <Controller
+        control={control}
+        name="name"
+        render={({ field, fieldState }) => (
+          <div className="field">
+            <label htmlFor="contact-name">Your name</label>
+            <input
+              {...field}
+              id="contact-name"
+              type="text"
+              autoComplete="name"
+              placeholder="Jane Smith"
+              aria-invalid={fieldState.invalid}
+              aria-describedby={fieldState.error ? "contact-name-error" : undefined}
+            />
+            {fieldState.error ? (
+              <span className="field__error" id="contact-name-error">
+                {fieldState.error.message}
+              </span>
+            ) : null}
+          </div>
+        )}
+      />
 
-                <Controller
-                    control={control}
-                    name="name"
-                    render={({field}) => <input {...field} type="text" placeholder="Name" className="ring ring-gray-200 py-2 px-3 w-full rounded-sm dark:ring-gray-700 " required /> }
-                    />
-                </div>
+      <Controller
+        control={control}
+        name="email"
+        render={({ field, fieldState }) => (
+          <div className="field">
+            <label htmlFor="contact-email">Email address</label>
+            <input
+              {...field}
+              id="contact-email"
+              type="email"
+              autoComplete="email"
+              inputMode="email"
+              placeholder="jane@company.com"
+              aria-invalid={fieldState.invalid}
+              aria-describedby={fieldState.error ? "contact-email-error" : undefined}
+            />
+            {fieldState.error ? (
+              <span className="field__error" id="contact-email-error">
+                {fieldState.error.message}
+              </span>
+            ) : null}
+          </div>
+        )}
+      />
 
-                <div className="" >
+      <Controller
+        control={control}
+        name="message"
+        render={({ field, fieldState }) => (
+          <div className="field field--full">
+            <label htmlFor="contact-message">A little about the project</label>
+            <textarea
+              {...field}
+              id="contact-message"
+              rows={5}
+              placeholder="What are you hoping to build?"
+              aria-invalid={fieldState.invalid}
+              aria-describedby={fieldState.error ? "contact-message-error" : undefined}
+            />
+            {fieldState.error ? (
+              <span className="field__error" id="contact-message-error">
+                {fieldState.error.message}
+              </span>
+            ) : null}
+          </div>
+        )}
+      />
 
-                <Controller
-                    control={control}
-                    name="email"
-                    render={({field}) => <input {...field} type="email" placeholder="Email" className="ring ring-gray-200 py-2 px-3 w-full rounded-sm dark:ring-gray-700" required /> }
-                    />
-                    </div>
-
-                <div className="sm:col-span-2" >
-                    
-                <Controller
-                    control={control}
-                    name="message"
-                    render={({field}) => <textarea {...field} placeholder="Message" className="ring h-full ring-gray-200 py-2 px-3 w-full rounded-sm dark:ring-gray-700" required /> }
-                    />
-                    </div>
-                
-                
-                <button 
-                    type="submit" 
-                    className="w-full text-sm bg-black/80 hover:bg-black/85 transition-all text-white py-2.5 px-5 max-w-fit rounded-md dark:bg-white/80 dark:hover:bg-white/85 dark:text-black disabled:bg-gray-200 disabled:text-gray-400 dark:disabled:bg-zinc-800 dark:disabled:text-zinc-400"
-                    disabled={isSubmitting}
-
-                >
-                    {
-                        isSubmitting ? "Sending..." : "Send"
-                    }
-                </button>
-
-            </form>
-        </section>
-    )
+      <button className="submit-button" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Sending…" : "Send message"}
+        <span aria-hidden="true">↗</span>
+      </button>
+    </form>
+  );
 }
