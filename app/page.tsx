@@ -1,5 +1,5 @@
 import ContactMe from "@/components/contact-me";
-import { projects } from "@/constants/data";
+import { experience, projects } from "@/constants/data";
 import {
   FaArrowDown,
   FaArrowUpRightFromSquare,
@@ -14,21 +14,21 @@ const capabilities = [
     title: "Frontend",
     description:
       "Polished, accessible interfaces with thoughtful motion and durable component systems.",
-    tools: "React · Next.js · TypeScript · Tailwind CSS",
+    tools: "React · Next.js · React Native · TypeScript · Tailwind CSS",
   },
   {
     number: "02",
-    title: "Backend",
+    title: "Backend & AI",
     description:
-      "Reliable APIs, data models, and services designed around real product needs.",
-    tools: "Node.js · Python · Go · Postgres · Redis",
+      "Reliable APIs, data models, and AI-powered services designed around real product needs.",
+    tools: "Node.js · Python · FastAPI · Postgres · Redis · RAG",
   },
   {
     number: "03",
     title: "Infrastructure",
     description:
       "Practical systems that move confidently from a local build to production scale.",
-    tools: "AWS · Docker · Linux · CI/CD",
+    tools: "AWS · Docker · Terraform · OpenTelemetry · CI/CD",
   },
 ];
 
@@ -92,11 +92,11 @@ export default function Home() {
         <div className="hero__meta reveal reveal--delay-3" aria-label="Profile details">
           <div>
             <span>Experience</span>
-            <strong>3+ years</strong>
+            <strong>4 years</strong>
           </div>
           <div>
-            <span>Focus</span>
-            <strong>Product engineering</strong>
+            <span>Currently</span>
+            <strong>Software Engineer · Neynar</strong>
           </div>
           <div>
             <span>Based in</span>
@@ -106,7 +106,7 @@ export default function Home() {
       </section>
 
       <section className="section" id="work" aria-labelledby="work-title">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <div>
             <p className="kicker">Selected work</p>
             <h2 id="work-title">Built to be useful.</h2>
@@ -119,13 +119,22 @@ export default function Home() {
 
         <div className="project-list">
           {projects.map((project, index) => (
-            <article className="project" key={project.id}>
+            <article className="project" key={project.id} data-reveal>
               <span className="project__number" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div className="project__content">
                 <h3>{project.title}</h3>
-                <p>{project.description}</p>
+                <div>
+                  <p>{project.description}</p>
+                  {project.stack ? (
+                    <ul className="project__stack" aria-label="Technologies">
+                      {project.stack.map((tech) => (
+                        <li key={tech}>{tech}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
               </div>
               <div className="project__links" aria-label={`${project.title} links`}>
                 <a href={project.link} target="_blank" rel="noreferrer">
@@ -144,8 +153,32 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section" id="experience" aria-labelledby="experience-title">
+        <div className="section-heading section-heading--compact" data-reveal>
+          <div>
+            <p className="kicker">Experience</p>
+            <h2 id="experience-title">Where I&apos;ve worked.</h2>
+          </div>
+        </div>
+
+        <ol className="timeline">
+          {experience.map((job) => (
+            <li className="timeline__item" key={job.company} data-reveal>
+              <span className="timeline__period">{job.period}</span>
+              <div className="timeline__body">
+                <h3>
+                  {job.role}{" "}
+                  <span className="timeline__company">· {job.company}</span>
+                </h3>
+                <p>{job.summary}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
       <section className="section expertise" id="expertise" aria-labelledby="expertise-title">
-        <div className="section-heading section-heading--compact">
+        <div className="section-heading section-heading--compact" data-reveal>
           <div>
             <p className="kicker">How I work</p>
             <h2 id="expertise-title">Across the whole stack.</h2>
@@ -154,7 +187,7 @@ export default function Home() {
 
         <div className="capability-grid">
           {capabilities.map((capability) => (
-            <article className="capability" key={capability.number}>
+            <article className="capability" key={capability.number} data-reveal>
               <span>{capability.number}</span>
               <h3>{capability.title}</h3>
               <p>{capability.description}</p>
@@ -165,7 +198,7 @@ export default function Home() {
       </section>
 
       <section className="contact" id="contact" aria-labelledby="contact-title">
-        <div className="contact__intro">
+        <div className="contact__intro" data-reveal>
           <p className="kicker">Let&apos;s make something good</p>
           <h2 id="contact-title">Have an idea in mind?</h2>
           <p>
