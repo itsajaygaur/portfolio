@@ -1,193 +1,104 @@
-import {
-  SiCss,
-  SiExpress,
-  SiFastapi,
-  SiHtml5,
-  SiJavascript,
-  SiLangchain,
-  SiMongodb,
-  SiMysql,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiPostgresql,
-  SiPrisma,
-  SiReact,
-  SiRedis,
-  SiRedux,
-  SiTailwindcss,
-  SiTypescript,
-} from "react-icons/si";
-import { FaAws, FaDocker, FaGitAlt, FaLinux, FaPython } from "react-icons/fa";
-import { FaGolang } from "react-icons/fa6";
-import { TbBrandReactNative } from "react-icons/tb";
-import { RiAiGenerate2 } from "react-icons/ri";
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+  github?: string;
+  stack?: string[];
+};
 
+export type Experience = {
+  company: string;
+  role: string;
+  period: string;
+  summary: string;
+};
 
-
-export const skills = [
+export const projects: Project[] = [
   {
-    skillName: "HTML",
-    skillIcon: SiHtml5,
+    id: 16,
+    title: "Kivo",
+    description:
+      "Multi-tenant AI knowledge base with permission-aware hybrid retrieval, reranking, document ingestion, audit controls, and streamed cited answers.",
+    link: "https://kivo-web.ajaypathak2527.workers.dev/demo",
+    github: "https://github.com/itsajaygaur/kivo",
+    stack: ["Next.js", "Cloudflare Workers", "D1 / FTS5", "Vectorize", "Workers AI"],
   },
-  {
-    skillName: "CSS",
-    skillIcon: SiCss,
-  },
-  {
-    skillName: "Javascript",
-    skillIcon: SiJavascript,
-  },
-  {
-    skillName: "Typescript",
-    skillIcon: SiTypescript,
-  },
-  {
-    skillName: "Python",
-    skillIcon: FaPython,
-  },
-  {
-    skillName: "Golang",
-    skillIcon: FaGolang,
-  },
-  {
-    skillName: "React.js",
-    skillIcon: SiReact,
-  },
-  {
-    skillName: "React Native",
-    skillIcon: TbBrandReactNative,
-  },
-  {
-    skillName: "Next.js",
-    skillIcon: SiNextdotjs,
-  },
-  {
-    skillName: "Node.js",
-    skillIcon: SiNodedotjs,
-  },
-  {
-    skillName: "FastAPI",
-    skillIcon: SiFastapi,
-  },
-  {
-    skillName: "Express.js",
-    skillIcon: SiExpress,
-  },
-  {
-    skillName: "MonogDB",
-    skillIcon: SiMongodb,
-  },
-  {
-    skillName: "Postgres",
-    skillIcon: SiPostgresql,
-  },
-  {
-    skillName: "MySQL",
-    skillIcon: SiMysql,
-  },
-  {
-    skillName: "Tailwind",
-    skillIcon: SiTailwindcss,
-  },
-  {
-    skillName: "Git & Github",
-    skillIcon: FaGitAlt,
-  },
-  {
-    skillName: "Redis",
-    skillIcon: SiRedis,
-  },
-  {
-    skillName: "Redux",
-    skillIcon: SiRedux,
-  },
-  {
-    skillName: "Prisma",
-    skillIcon: SiPrisma,
-  },
-  {
-    skillName: "Linux",
-    skillIcon: FaLinux,
-  },
-  {
-    skillName: "AWS",
-    skillIcon: FaAws,
-  },
-  {
-    skillName: "Docker",
-    skillIcon: FaDocker,
-  },
-  {
-    skillName: "Langchain",
-    skillIcon: SiLangchain,
-  },
-  {
-    skillName: "Gen AI",
-    skillIcon: RiAiGenerate2,
-  },
-];
-
-export const projects = [
   {
     id: 15,
     title: "TraceVista",
-    description: "A privacy-first OpenTelemetry trace inspector that turns OTLP exports into interactive waterfalls, service maps, and performance insights entirely in the browser.",
+    description:
+      "A privacy-first OpenTelemetry trace inspector that turns OTLP exports into interactive waterfalls, service maps, and performance insights entirely in the browser.",
     link: "https://tracevista.vercel.app",
     github: "https://github.com/itsajaygaur/tracevista",
-  },
-  {
-    id: 1,
-    title: "Mykart - Ecommerce store",
-    description: "A fully feature ecommerce store with admin panel and payments built with Next.js",
-    link: "https://shop.ajaygaur.in",
-    github: "https://github.com/itsajaygaur/ecommerce",
+    stack: ["OpenTelemetry", "React", "TypeScript"],
   },
   {
     id: 10,
-    title: "Blog",
-    description: "Blog website with authentication built with Next.js and Auth.js",
+    title: "Draftline",
+    description:
+      "Publishing platform with a secure creator studio, autosave, managed media, search, SEO, and automated quality gates.",
     link: "https://blog.ajaygaur.in",
     github: "https://github.com/itsajaygaur/blog",
+    stack: ["Next.js", "TypeScript", "Neon PostgreSQL", "Drizzle", "Better Auth", "Vercel Blob"],
   },
   {
-    id: 8,
-    title: "Tenzi",
-    description: "Designed and developed a simple tenzi game built in React.js.",
-    link: "https://game-tenzi.netlify.app/",
-    github: "https://github.com/itsajaygaur/tenzi",
-  },
-  {
-    id: 9,
-    title: "Tic Tac Toe",
-    description: "A simple Tic Tac Toe game built in HTML, CSS and Javascript",
-    link: "https://itsajaygaur.github.io/tic-tac-toe/",
-    github: "https://github.com/itsajaygaur/tic-tac-toe",
+    id: 1,
+    title: "Mykart — Ecommerce store",
+    description:
+      "Full-featured ecommerce store with an admin panel and payments.",
+    link: "https://shop.ajaygaur.in",
+    github: "https://github.com/itsajaygaur/ecommerce",
+    stack: ["Next.js", "TypeScript", "Postgres"],
   },
   {
     id: 11,
-    title: "React flow app",
-    description: "A web app built with MERN stack includes authentication allows users to design and implement nodes and edges using a visual flowchart interface",
+    title: "React Flow app",
+    description:
+      "Design and connect nodes and edges on a visual flowchart canvas, with authentication and persistence.",
     link: "https://thereactflow.vercel.app/",
     github: "https://github.com/itsajaygaur/react-flow",
-  },
-  {
-    id: 12,
-    title: "Snake game",
-    description: "A simple snake game built with Typescript & Next.js",
-    link: "https://gameofsnake.vercel.app/",
-    github: "https://github.com/itsajaygaur/snake-game",
+    stack: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
     id: 13,
     title: "Next-Gen AI Voice Translator",
-    description: "An AI-powered voice translation app built with Next.js for fast and accurate real-time language conversion.",
+    description:
+      "An AI-powered voice translation app for fast, accurate real-time language conversion.",
     link: "https://nao-translator-lime.vercel.app",
     github: "https://github.com/itsajaygaur/nao-translator",
+    stack: ["Next.js", "AI SDK"],
   },
   {
     id: 14,
     title: "Best Medical University Services",
-    description: "A modern web application built with Next.js, with all content seamlessly managed through Sanity CMS.",
+    description:
+      "A modern marketing site with all content seamlessly managed through a headless CMS.",
     link: "https://bmus.co.in",
+    stack: ["Next.js", "Sanity CMS"],
+  },
+];
+
+export const experience: Experience[] = [
+  {
+    company: "Neynar",
+    role: "Software Engineer",
+    period: "Apr 2026 — Present",
+    summary:
+      "Leading Audio Spaces for Farcaster across web, iOS, and Android with LiveKit; shipping full-stack features for a network serving 1M+ users, instrumented with Datadog.",
+  },
+  {
+    company: "Creative Buffer",
+    role: "Software Engineer",
+    period: "Nov 2024 — Apr 2026",
+    summary:
+      "Built production full-stack systems across healthcare, analytics, and AI — AWS ECS with Terraform and OpenTelemetry, a RAG pipeline on Pinecone — while mentoring junior engineers.",
+  },
+  {
+    company: "Girl Power Talk",
+    role: "Web Developer",
+    period: "Oct 2022 — Jul 2024",
+    summary:
+      "Shipped Next.js, TypeScript, and Prisma products; cut profile-page load times by ~50% with server-side rendering and caching; crafted motion with GSAP and Framer Motion.",
   },
 ];

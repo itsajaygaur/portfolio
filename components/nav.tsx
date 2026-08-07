@@ -1,8 +1,10 @@
 import ThemeToggler from "@/components/theme-toggler";
+import MobileMenu from "@/components/mobile-menu";
 import Link from "next/link";
 
 const links = [
   { label: "Work", href: "#work" },
+  { label: "Experience", href: "#experience" },
   { label: "Expertise", href: "#expertise" },
   { label: "Contact", href: "#contact" },
 ];
@@ -29,6 +31,7 @@ export default function Navbar() {
           <a className="nav__resume" href="/ajay-gaur.pdf" target="_blank" rel="noreferrer">
             Résumé ↗
           </a>
+          <MobileMenu links={links} />
         </div>
       </nav>
     </header>
