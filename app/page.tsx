@@ -1,92 +1,45 @@
 import ContactMe from "@/components/contact-me";
-import { experience, projects } from "@/constants/data";
-import {
-  FaArrowDown,
-  FaArrowUpRightFromSquare,
-  FaGithub,
-  FaLinkedinIn,
-} from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
+import { experience, expertise, projects, socials } from "@/constants/data";
 
-const capabilities = [
-  {
-    number: "01",
-    title: "Frontend",
-    description:
-      "Polished, accessible interfaces with thoughtful motion and durable component systems.",
-    tools: "React · Next.js · React Native · TypeScript · Tailwind CSS",
-  },
-  {
-    number: "02",
-    title: "Backend & AI",
-    description:
-      "Reliable APIs, data models, and AI-powered services designed around real product needs.",
-    tools: "Node.js · Python · FastAPI · Postgres · Redis · RAG",
-  },
-  {
-    number: "03",
-    title: "Infrastructure",
-    description:
-      "Practical systems that move confidently from a local build to production scale.",
-    tools: "AWS · Docker · Terraform · OpenTelemetry · CI/CD",
-  },
-];
-
-const socials = [
-  {
-    label: "GitHub",
-    href: "https://github.com/itsajaygaur",
-    icon: FaGithub,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/itsajaygaur",
-    icon: FaLinkedinIn,
-  },
-  {
-    label: "Email",
-    href: "mailto:ajaypathak2527@gmail.com",
-    icon: MdEmail,
-  },
-];
+const featuredProjects = projects.filter((project) => project.featured);
+const moreProjects = projects.filter((project) => !project.featured);
 
 export default function Home() {
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero__eyebrow reveal">
+        <p className="hero__status reveal">
           <span className="status-dot" aria-hidden="true" />
           Available for thoughtful collaborations
-        </div>
+        </p>
 
-        <div className="hero__grid">
-          <div className="hero__main reveal reveal--delay-1">
-            <h1 id="hero-title">
-              I design &amp; build digital products that feel <em>simple.</em>
-            </h1>
-          </div>
+        <h1 id="hero-title" className="reveal reveal--delay-1">
+          I design &amp; build digital products that feel <em>simple.</em>
+        </h1>
 
-          <div className="hero__aside reveal reveal--delay-2">
-            <p>
-              I&apos;m Ajay, a full-stack engineer turning ambitious ideas into
-              clear, reliable products—from interface to infrastructure.
-            </p>
-            <div className="hero__actions">
-              <a className="button button--primary" href="#work">
-                Explore my work
-                <FaArrowDown aria-hidden="true" />
-              </a>
-              <a
-                className="text-link"
-                href="/ajay-gaur.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View résumé
-                <FaArrowUpRightFromSquare aria-hidden="true" />
-              </a>
-            </div>
-          </div>
+        <p className="hero__intro reveal reveal--delay-2">
+          I&apos;m Ajay, a full-stack engineer turning ambitious ideas into
+          clear, reliable products—from interface to infrastructure.
+        </p>
+
+        <div className="hero__actions reveal reveal--delay-2">
+          <a className="button" href="#work">
+            Explore my work
+            <span className="glyph" aria-hidden="true">
+              ↓
+            </span>
+          </a>
+          <a
+            className="text-link"
+            href="/ajay-gaur.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View résumé
+            <span className="glyph" aria-hidden="true">
+              ↗
+            </span>
+          </a>
         </div>
 
         <div className="hero__meta reveal reveal--delay-3" aria-label="Profile details">
@@ -107,58 +60,85 @@ export default function Home() {
 
       <section className="section" id="work" aria-labelledby="work-title">
         <div className="section-heading" data-reveal>
-          <div>
-            <p className="kicker">Selected work</p>
-            <h2 id="work-title">Built to be useful.</h2>
-          </div>
+          <p className="section-label">Selected work</p>
+          <h2 id="work-title">Built to be useful.</h2>
           <p>
             A mix of product experiments, client work, and tools built to solve
             real problems.
           </p>
         </div>
 
-        <div className="project-list">
-          {projects.map((project, index) => (
-            <article className="project" key={project.id} data-reveal>
-              <span className="project__number" aria-hidden="true">
+        <div className="featured-list">
+          {featuredProjects.map((project, index) => (
+            <article className="featured" key={project.id} data-reveal>
+              <span className="featured__index" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <div className="project__content">
-                <h3>{project.title}</h3>
-                <div>
-                  <p>{project.description}</p>
-                  {project.stack ? (
-                    <ul className="project__stack" aria-label="Technologies">
-                      {project.stack.map((tech) => (
-                        <li key={tech}>{tech}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </div>
-              </div>
-              <div className="project__links" aria-label={`${project.title} links`}>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              {project.stack ? (
+                <p className="featured__stack" aria-label="Technologies">
+                  {project.stack.join(" · ")}
+                </p>
+              ) : null}
+              <div className="featured__links" aria-label={`${project.title} links`}>
                 <a href={project.link} target="_blank" rel="noreferrer">
-                  Live site
-                  <FaArrowUpRightFromSquare aria-hidden="true" />
+                  Live
+                  <span className="glyph" aria-hidden="true">
+                    ↗
+                  </span>
                 </a>
                 {project.github ? (
                   <a href={project.github} target="_blank" rel="noreferrer">
                     Source
-                    <FaGithub aria-hidden="true" />
+                    <span className="glyph" aria-hidden="true">
+                      ↗
+                    </span>
                   </a>
                 ) : null}
               </div>
             </article>
           ))}
         </div>
+
+        <div className="more-work" data-reveal>
+          <h3>More projects</h3>
+          <ul className="project-rows">
+            {moreProjects.map((project) => (
+              <li className="project-row" key={project.id}>
+                <a
+                  className="project-row__main"
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="project-row__title">{project.title}</span>
+                  <span className="project-row__desc">{project.description}</span>
+                  <span className="project-row__arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+                {project.github ? (
+                  <a
+                    className="project-row__source"
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} source code`}
+                  >
+                    Source
+                  </a>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section className="section" id="experience" aria-labelledby="experience-title">
-        <div className="section-heading section-heading--compact" data-reveal>
-          <div>
-            <p className="kicker">Experience</p>
-            <h2 id="experience-title">Where I&apos;ve worked.</h2>
-          </div>
+        <div className="section-heading" data-reveal>
+          <p className="section-label">Experience</p>
+          <h2 id="experience-title">Where I&apos;ve worked.</h2>
         </div>
 
         <ol className="timeline">
@@ -177,18 +157,16 @@ export default function Home() {
         </ol>
       </section>
 
-      <section className="section expertise" id="expertise" aria-labelledby="expertise-title">
-        <div className="section-heading section-heading--compact" data-reveal>
-          <div>
-            <p className="kicker">How I work</p>
-            <h2 id="expertise-title">Across the whole stack.</h2>
-          </div>
+      <section className="section" id="expertise" aria-labelledby="expertise-title">
+        <div className="section-heading" data-reveal>
+          <p className="section-label">How I work</p>
+          <h2 id="expertise-title">Across the whole stack.</h2>
         </div>
 
         <div className="capability-grid">
-          {capabilities.map((capability) => (
+          {expertise.map((capability) => (
             <article className="capability" key={capability.number} data-reveal>
-              <span>{capability.number}</span>
+              <span aria-hidden="true">{capability.number}</span>
               <h3>{capability.title}</h3>
               <p>{capability.description}</p>
               <small>{capability.tools}</small>
@@ -197,15 +175,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact" id="contact" aria-labelledby="contact-title">
-        <div className="contact__intro" data-reveal>
-          <p className="kicker">Let&apos;s make something good</p>
+      <section className="section" id="contact" aria-labelledby="contact-title">
+        <div className="contact__intro section-heading" data-reveal>
+          <p className="section-label">Let&apos;s make something good</p>
           <h2 id="contact-title">Have an idea in mind?</h2>
           <p>
-            Tell me what you&apos;re working on, what&apos;s getting in the way, or
-            simply say hello. I&apos;ll get back to you soon.
+            Tell me what you&apos;re working on, what&apos;s getting in the way,
+            or simply say hello. I&apos;ll get back to you soon.
           </p>
-          <a href="mailto:ajaypathak2527@gmail.com">
+          <a className="contact-email" href="mailto:ajaypathak2527@gmail.com">
             ajaypathak2527@gmail.com
           </a>
         </div>
@@ -221,10 +199,11 @@ export default function Home() {
               href={social.href}
               target={social.href.startsWith("http") ? "_blank" : undefined}
               rel={social.href.startsWith("http") ? "noreferrer" : undefined}
-              aria-label={social.label}
             >
-              <social.icon aria-hidden="true" />
-              <span>{social.label}</span>
+              {social.label}
+              {social.href.startsWith("http") ? (
+                <span aria-hidden="true"> ↗</span>
+              ) : null}
             </a>
           ))}
         </div>

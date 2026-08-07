@@ -39,9 +39,8 @@ export default function MobileMenu({ links }: { links: MenuLink[] }) {
 
       <div className="mobile-menu" id="mobile-menu" data-open={open}>
         <nav aria-label="Mobile navigation">
-          {links.map((link, index) => (
+          {links.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
-              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               {link.label}
             </a>
           ))}
