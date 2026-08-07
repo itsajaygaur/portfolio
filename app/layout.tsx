@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
@@ -14,7 +14,15 @@ const siteUrl = getSiteUrl();
 const geist = Geist({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-sans",
   fallback: ["Arial", "sans-serif"],
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  fallback: ["Courier New", "monospace"],
 });
 
 export const metadata: Metadata = {
@@ -72,7 +80,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={geist.className}>
+      <body className={`${geist.variable} ${geistMono.variable}`}>
         <ProvideTheme>
           <a className="skip-link" href="#main-content">
             Skip to content
@@ -81,7 +89,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="page-shell">
             <main id="main-content">{children}</main>
           </div>
-          <Toaster position="bottom-center" />
+          <Toaster
+            position="bottom-center"
+            toastOptions={{
+              style: {
+                background: "var(--bg)",
+                color: "var(--fg)",
+                border: "1px solid var(--line)",
+                borderRadius: "6px",
+                boxShadow: "none",
+                fontSize: "0.875rem",
+              },
+            }}
+          />
         </ProvideTheme>
         <ScrollReveal />
         <Analytics />

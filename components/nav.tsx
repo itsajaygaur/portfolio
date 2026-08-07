@@ -5,7 +5,6 @@ import Link from "next/link";
 const links = [
   { label: "Work", href: "#work" },
   { label: "Experience", href: "#experience" },
-  { label: "Expertise", href: "#expertise" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -14,8 +13,7 @@ export default function Navbar() {
     <header className="site-header" id="top">
       <nav className="nav" aria-label="Primary navigation">
         <Link className="brand" href="/" aria-label="Ajay Gaur — home">
-          <span>AG</span>
-          <span className="brand__name">Ajay Gaur</span>
+          Ajay Gaur
         </Link>
 
         <div className="nav__links">
@@ -27,10 +25,15 @@ export default function Navbar() {
         </div>
 
         <div className="nav__actions">
-          <ThemeToggler />
-          <a className="nav__resume" href="/ajay-gaur.pdf" target="_blank" rel="noreferrer">
+          <a
+            className="nav__resume"
+            href="/ajay-gaur.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
             Résumé ↗
           </a>
+          <ThemeToggler />
           <MobileMenu links={links} />
         </div>
       </nav>
