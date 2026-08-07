@@ -6,6 +6,7 @@ import "./globals.css";
 import { ProvideTheme } from "./providers";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/nav";
+import ScrollReveal from "@/components/scroll-reveal";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
@@ -76,12 +77,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a className="skip-link" href="#main-content">
             Skip to content
           </a>
+          <Navbar />
           <div className="page-shell">
-            <Navbar />
             <main id="main-content">{children}</main>
           </div>
           <Toaster position="bottom-center" />
         </ProvideTheme>
+        <ScrollReveal />
         <Analytics />
       </body>
     </html>
