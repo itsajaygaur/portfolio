@@ -46,7 +46,7 @@ export default function MobileMenu({ links }: { links: MenuLink[] }) {
           ))}
           <a
             className="mobile-menu__resume"
-            href="/ajay-gaur.pdf"
+            href="/ajay-gaur.pdf?v=20260804"
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}

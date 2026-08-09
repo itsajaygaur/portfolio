@@ -27,7 +27,7 @@ export default function Navbar() {
         <div className="nav__actions">
           <a
             className="nav__resume"
-            href="/ajay-gaur.pdf"
+            href="/ajay-gaur.pdf?v=20260804"
             target="_blank"
             rel="noreferrer"
           >
