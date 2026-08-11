@@ -10,9 +10,9 @@ const links = [
 
 export default function Navbar() {
   return (
-    <header className="site-header" id="top">
+    <header className="site-header">
       <nav className="nav" aria-label="Primary navigation">
-        <Link className="brand" href="/" aria-label="Ajay Gaur — home">
+        <Link className="brand" href="/" aria-label="Ajay Gaur - home">
           Ajay Gaur
         </Link>
 
