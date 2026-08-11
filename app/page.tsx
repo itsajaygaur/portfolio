@@ -19,7 +19,7 @@ export default function Home() {
 
         <p className="hero__intro reveal reveal--delay-2">
           I&apos;m Ajay, a full-stack engineer turning ambitious ideas into
-          clear, reliable products—from interface to infrastructure.
+          clear, reliable products, from interface to infrastructure.
         </p>
 
         <div className="hero__actions reveal reveal--delay-2">
