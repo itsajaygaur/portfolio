@@ -28,7 +28,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: "Ajay Gaur — Full-stack Engineer",
+    default: "Ajay Gaur - Full-stack Engineer",
     template: "%s | Ajay Gaur",
   },
   description:
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Ajay Gaur — Full-stack Engineer",
+    title: "Ajay Gaur - Full-stack Engineer",
     description: "Designing and building thoughtful digital products.",
     siteName: "Ajay Gaur",
     images: [
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
         url: new URL("/og.png", siteUrl),
         width: 1200,
         height: 630,
-        alt: "Ajay Gaur — Full-stack engineer",
+        alt: "Ajay Gaur - Full-stack engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@itsajaygaur",
-    title: "Ajay Gaur — Full-stack Engineer",
+    title: "Ajay Gaur - Full-stack Engineer",
     description: "Designing and building thoughtful digital products.",
     images: [new URL("/og.png", siteUrl)],
   },
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.variable} ${geistMono.variable}`}>
+      <body id="top" className={`${geist.variable} ${geistMono.variable}`}>
         <ProvideTheme>
           <a className="skip-link" href="#main-content">
             Skip to content

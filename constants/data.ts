@@ -17,11 +17,21 @@ export type Experience = {
 
 export const projects: Project[] = [
   {
+    id: 10,
+    title: "Draftline",
+    description:
+      "Publishing platform with a secure creator studio, autosave, managed media, search, SEO, and automated quality gates.",
+    link: "https://blog.ajaygaur.in",
+    github: "https://github.com/itsajaygaur/blog",
+    stack: ["Next.js", "TypeScript", "Neon PostgreSQL", "Drizzle", "Better Auth", "Vercel Blob"],
+    featured: true,
+  },
+  {
     id: 16,
     title: "Kivo",
     description:
       "Multi-tenant AI knowledge base with permission-aware hybrid retrieval, reranking, document ingestion, audit controls, and streamed cited answers.",
-    link: "https://kivo-web.ajaypathak2527.workers.dev/demo",
+    link: "https://kivo.ajaygaur.in",
     github: "https://github.com/itsajaygaur/kivo",
     stack: ["Next.js", "Cloudflare Workers", "D1 / FTS5", "Vectorize", "Workers AI"],
     featured: true,
@@ -37,18 +47,8 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: 10,
-    title: "Draftline",
-    description:
-      "Publishing platform with a secure creator studio, autosave, managed media, search, SEO, and automated quality gates.",
-    link: "https://blog.ajaygaur.in",
-    github: "https://github.com/itsajaygaur/blog",
-    stack: ["Next.js", "TypeScript", "Neon PostgreSQL", "Drizzle", "Better Auth", "Vercel Blob"],
-    featured: true,
-  },
-  {
     id: 1,
-    title: "Mykart — Ecommerce store",
+    title: "Mykart - Ecommerce store",
     description:
       "Full-featured ecommerce store with an admin panel and payments.",
     link: "https://shop.ajaygaur.in",
@@ -129,21 +129,21 @@ export const experience: Experience[] = [
   {
     company: "Neynar",
     role: "Software Engineer",
-    period: "Apr 2026 — Present",
+    period: "Apr 2026 - Present",
     summary:
       "Leading Audio Spaces for Farcaster across web, iOS, and Android with LiveKit; shipping full-stack features for a network serving 1M+ users, instrumented with Datadog.",
   },
   {
     company: "Creative Buffer",
     role: "Software Engineer",
-    period: "Nov 2024 — Apr 2026",
+    period: "Nov 2024 - Apr 2026",
     summary:
-      "Built production full-stack systems across healthcare, analytics, and AI — AWS ECS with Terraform and OpenTelemetry, a RAG pipeline on Pinecone — while mentoring junior engineers.",
+      "Built production full-stack systems across healthcare, analytics, and AI, including AWS ECS with Terraform and OpenTelemetry and a RAG pipeline on Pinecone, while mentoring junior engineers.",
   },
   {
     company: "Girl Power Talk",
     role: "Web Developer",
-    period: "Oct 2022 — Jul 2024",
+    period: "Oct 2022 - Jul 2024",
     summary:
       "Shipped Next.js, TypeScript, and Prisma products; cut profile-page load times by ~50% with server-side rendering and caching; crafted motion with GSAP and Framer Motion.",
   },
