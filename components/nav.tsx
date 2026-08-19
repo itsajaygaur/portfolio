@@ -1,6 +1,7 @@
-import ThemeToggler from "@/components/theme-toggler";
-import MobileMenu from "@/components/mobile-menu";
 import Link from "next/link";
+
+import ThemeToggler from "@/components/theme-toggler";
+import { profile } from "@/constants/data";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -11,32 +12,21 @@ const links = [
 export default function Navbar() {
   return (
     <header className="site-header">
-      <nav className="nav" aria-label="Primary navigation">
-        <Link className="brand" href="/" aria-label="Ajay Gaur - home">
-          Ajay Gaur
-        </Link>
+      <Link className="brand" href="/" aria-label={`${profile.name} — home`}>
+        {profile.name}
+      </Link>
 
-        <div className="nav__links">
+      <div className="site-header__actions">
+        <nav className="site-nav" aria-label="Sections">
           {links.map((link) => (
-            <a key={link.href} href={link.href}>
+            <a className="link-quiet" key={link.href} href={link.href}>
               {link.label}
             </a>
           ))}
-        </div>
+        </nav>
 
-        <div className="nav__actions">
-          <a
-            className="nav__resume"
-            href="/ajay-gaur.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Résumé ↗
-          </a>
-          <ThemeToggler />
-          <MobileMenu links={links} />
-        </div>
-      </nav>
+        <ThemeToggler />
+      </div>
     </header>
   );
 }
