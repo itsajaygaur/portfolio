@@ -1,3 +1,47 @@
+export const siteCopy = {
+  hero: {
+    masthead: [
+      { label: "Role", value: "Full-stack engineer" },
+      { label: "Currently", value: "Neynar" },
+      { label: "Based in", value: "India · Working globally" },
+      { label: "Experience", value: "4 years" },
+    ],
+    status: "Available for thoughtful collaborations",
+    statement: {
+      before: "I design & build digital products that feel ",
+      accent: "simple",
+      after: ".",
+    },
+    intro:
+      "I'm Ajay, a full-stack engineer turning ambitious ideas into clear, reliable products, from interface to infrastructure.",
+  },
+  work: {
+    index: "01",
+    label: "Selected work",
+    title: "Built to be useful.",
+    sub: "A mix of product experiments, client work, and tools built to solve real problems.",
+    moreTitle: "More projects",
+  },
+  experience: {
+    index: "02",
+    label: "Experience",
+    title: "Where I've worked.",
+  },
+  expertise: {
+    index: "03",
+    label: "How I work",
+    title: "Across the whole stack.",
+  },
+  contact: {
+    index: "04",
+    label: "Let's make something good",
+    title: "Have an idea in mind?",
+    body: "Tell me what you're working on, what's getting in the way, or simply say hello. I'll get back to you soon.",
+    email: "ajaypathak2527@gmail.com",
+  },
+  colophon: "Set in Archivo & Space Mono · Built with Next.js",
+} as const;
+
 export type Project = {
   id: number;
   title: string;

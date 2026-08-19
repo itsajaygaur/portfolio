@@ -89,7 +89,7 @@ export default function ContactMe() {
         control={control}
         name="message"
         render={({ field, fieldState }) => (
-          <div className="field field--full">
+          <div className="field">
             <label htmlFor="contact-message">A little about the project</label>
             <textarea
               {...field}
@@ -108,9 +108,15 @@ export default function ContactMe() {
         )}
       />
 
-      <button className="submit-button" type="submit" disabled={isSubmitting}>
+      <button
+        className="button submit-button"
+        type="submit"
+        disabled={isSubmitting}
+      >
         {isSubmitting ? "Sending…" : "Send message"}
-        <span aria-hidden="true">↗</span>
+        <span className="glyph" aria-hidden="true">
+          ↗
+        </span>
       </button>
     </form>
   );
