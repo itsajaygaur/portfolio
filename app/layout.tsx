@@ -42,6 +42,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: new URL("/og.png", siteUrl),
+        secureUrl: new URL("/og.png", siteUrl),
+        type: "image/png",
         width: 1200,
         height: 630,
         alt: "Ajay Gaur — Full-stack engineer",
@@ -53,7 +55,12 @@ export const metadata: Metadata = {
     creator: "@itsajaygaur",
     title: "Ajay Gaur — Full-stack engineer",
     description: "Building products for web and mobile.",
-    images: [new URL("/og.png", siteUrl)],
+    images: [
+      {
+        url: new URL("/og.png", siteUrl),
+        alt: "Ajay Gaur — Full-stack engineer",
+      },
+    ],
   },
   robots: {
     index: true,
