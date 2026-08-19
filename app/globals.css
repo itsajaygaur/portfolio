@@ -293,6 +293,12 @@ svg {
   letter-spacing: -0.011em;
 }
 
+/* A hairline in --line disappears under 20px text, so links in the lead
+   carry a slightly stronger rule to stay recognisable. */
+.intro__lead .link {
+  border-bottom-color: var(--fg-muted);
+}
+
 .intro__meta {
   margin-top: 1.75rem;
   font-size: var(--text-xs);

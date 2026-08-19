@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Ajay Gaur",
   },
   description:
-    "Ajay Gaur is a full-stack engineer building web products end to end — interface, API, and the infrastructure underneath.",
+    "Ajay Gaur is a full-stack engineer building products for web and mobile, from interface to infrastructure.",
   keywords: [
     "Ajay Gaur",
     "full-stack engineer",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     title: "Ajay Gaur — Full-stack engineer",
-    description: "Building web products end to end.",
+    description: "Building products for web and mobile.",
     siteName: "Ajay Gaur",
     images: [
       {
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@itsajaygaur",
     title: "Ajay Gaur — Full-stack engineer",
-    description: "Building web products end to end.",
+    description: "Building products for web and mobile.",
     images: [new URL("/og.png", siteUrl)],
   },
   robots: {

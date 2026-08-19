@@ -11,7 +11,18 @@ export default function Home() {
           </h1>
           <p className="intro__role">{profile.role}</p>
 
-          <p className="intro__lead">{profile.intro}</p>
+          <p className="intro__lead">
+            {profile.intro.before}
+            <a
+              className="link"
+              href={profile.intro.link.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {profile.intro.link.label}
+            </a>
+            {profile.intro.after}
+          </p>
 
           <p className="intro__meta">
             {profile.location} · {profile.availability} ·{" "}

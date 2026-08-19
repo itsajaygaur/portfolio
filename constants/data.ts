@@ -30,8 +30,13 @@ export type Social = {
 export const profile = {
   name: "Ajay Gaur",
   role: "Full-stack engineer",
-  intro:
-    "I build web products end to end — interface, API, and the infrastructure underneath. Currently at Neynar, working on Audio Spaces for Farcaster.",
+  /* Renders as one paragraph, with `link` inlined between the two halves. */
+  intro: {
+    before:
+      "I build products for web and mobile, from interface to infrastructure. Currently at Neynar, building ",
+    link: { label: "Farcaster", href: "https://farcaster.xyz" },
+    after: ".",
+  },
   location: "India",
   availability: "Open to new work",
   email: "ajaypathak2527@gmail.com",
@@ -82,6 +87,15 @@ export const projects: Project[] = [
     stack: ["OpenTelemetry", "React", "TypeScript"],
   },
   {
+    id: 17,
+    title: "RailRoute",
+    description:
+      "Train journey planner for the Indian rail network, finding direct trains and timetable-checked one-change routes as graph traversals in Cypher.",
+    link: "https://railroute-rho.vercel.app",
+    github: "https://github.com/itsajaygaur/cognoDB",
+    stack: ["Next.js", "CognoDB", "Cypher", "neo4j-driver"],
+  },
+  {
     id: 1,
     title: "Mykart",
     description:
@@ -89,15 +103,6 @@ export const projects: Project[] = [
     link: "https://shop.ajaygaur.in",
     github: "https://github.com/itsajaygaur/ecommerce",
     stack: ["Next.js", "TypeScript", "Postgres"],
-  },
-  {
-    id: 11,
-    title: "React Flow app",
-    description:
-      "Design and connect nodes and edges on a visual flowchart canvas, with authentication and persistence.",
-    link: "https://thereactflow.vercel.app/",
-    github: "https://github.com/itsajaygaur/react-flow",
-    stack: ["React", "Node.js", "Express", "MongoDB"],
   },
   {
     id: 13,
@@ -122,21 +127,21 @@ export const experience: Experience[] = [
   {
     company: "Neynar",
     role: "Software Engineer",
-    period: "Apr 2026 — Present",
+    period: "Apr 2026 – Present",
     summary:
       "Leading Audio Spaces for Farcaster across web, iOS, and Android with LiveKit; shipping full-stack features for a network serving 1M+ users, instrumented with Datadog.",
   },
   {
     company: "Creative Buffer",
     role: "Software Engineer",
-    period: "Nov 2024 — Apr 2026",
+    period: "Nov 2024 – Apr 2026",
     summary:
       "Built production full-stack systems across healthcare, analytics, and AI, including AWS ECS with Terraform and OpenTelemetry and a RAG pipeline on Pinecone, while mentoring junior engineers.",
   },
   {
     company: "Girl Power Talk",
     role: "Web Developer",
-    period: "Oct 2022 — Jul 2024",
+    period: "Oct 2022 – Jul 2024",
     summary:
       "Shipped Next.js, TypeScript, and Prisma products; cut profile-page load times by ~50% with server-side rendering and caching; crafted motion with GSAP and Framer Motion.",
   },
