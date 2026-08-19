@@ -5,7 +5,6 @@ export type Project = {
   link: string;
   github?: string;
   stack?: string[];
-  featured?: boolean;
 };
 
 export type Experience = {
@@ -13,6 +12,32 @@ export type Experience = {
   role: string;
   period: string;
   summary: string;
+};
+
+export type StackArea = {
+  area: string;
+  tools: string[];
+};
+
+export type Social = {
+  label: string;
+  href: string;
+};
+
+/* Every piece of copy on the page lives in this file. Ordering within each
+   array is the ordering on the page — there is no featured/highlight flag. */
+
+export const profile = {
+  name: "Ajay Gaur",
+  role: "Full-stack engineer",
+  intro:
+    "I build web products end to end — interface, API, and the infrastructure underneath. Currently at Neynar, working on Audio Spaces for Farcaster.",
+  location: "India",
+  availability: "Open to new work",
+  email: "ajaypathak2527@gmail.com",
+  resume: "/ajay-gaur.pdf",
+  contactNote:
+    "Email is the fastest way to reach me. The form works just as well if you prefer it.",
 };
 
 export const projects: Project[] = [
@@ -23,8 +48,14 @@ export const projects: Project[] = [
       "Publishing platform with a secure creator studio, autosave, managed media, search, SEO, and automated quality gates.",
     link: "https://blog.ajaygaur.in",
     github: "https://github.com/itsajaygaur/blog",
-    stack: ["Next.js", "TypeScript", "Neon PostgreSQL", "Drizzle", "Better Auth", "Vercel Blob"],
-    featured: true,
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Neon PostgreSQL",
+      "Drizzle",
+      "Better Auth",
+      "Vercel Blob",
+    ],
   },
   {
     id: 16,
@@ -33,8 +64,13 @@ export const projects: Project[] = [
       "Multi-tenant AI knowledge base with permission-aware hybrid retrieval, reranking, document ingestion, audit controls, and streamed cited answers.",
     link: "https://kivo.ajaygaur.in",
     github: "https://github.com/itsajaygaur/kivo",
-    stack: ["Next.js", "Cloudflare Workers", "D1 / FTS5", "Vectorize", "Workers AI"],
-    featured: true,
+    stack: [
+      "Next.js",
+      "Cloudflare Workers",
+      "D1 / FTS5",
+      "Vectorize",
+      "Workers AI",
+    ],
   },
   {
     id: 15,
@@ -44,11 +80,10 @@ export const projects: Project[] = [
     link: "https://tracevista.vercel.app",
     github: "https://github.com/itsajaygaur/tracevista",
     stack: ["OpenTelemetry", "React", "TypeScript"],
-    featured: true,
   },
   {
     id: 1,
-    title: "Mykart - Ecommerce store",
+    title: "Mykart",
     description:
       "Full-featured ecommerce store with an admin panel and payments.",
     link: "https://shop.ajaygaur.in",
@@ -83,68 +118,47 @@ export const projects: Project[] = [
   },
 ];
 
-export type Expertise = {
-  number: string;
-  title: string;
-  description: string;
-  tools: string;
-};
-
-export type Social = {
-  label: string;
-  href: string;
-};
-
-export const expertise: Expertise[] = [
-  {
-    number: "01",
-    title: "Frontend",
-    description:
-      "Polished, accessible interfaces with thoughtful motion and durable component systems.",
-    tools: "React · Next.js · React Native · TypeScript · Tailwind CSS",
-  },
-  {
-    number: "02",
-    title: "Backend & AI",
-    description:
-      "Reliable APIs, data models, and AI-powered services designed around real product needs.",
-    tools: "Node.js · Python · FastAPI · Postgres · Redis · RAG",
-  },
-  {
-    number: "03",
-    title: "Infrastructure",
-    description:
-      "Practical systems that move confidently from a local build to production scale.",
-    tools: "AWS · Docker · Terraform · OpenTelemetry · CI/CD",
-  },
-];
-
-export const socials: Social[] = [
-  { label: "GitHub", href: "https://github.com/itsajaygaur" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/itsajaygaur" },
-  { label: "Email", href: "mailto:ajaypathak2527@gmail.com" },
-];
-
 export const experience: Experience[] = [
   {
     company: "Neynar",
     role: "Software Engineer",
-    period: "Apr 2026 - Present",
+    period: "Apr 2026 — Present",
     summary:
       "Leading Audio Spaces for Farcaster across web, iOS, and Android with LiveKit; shipping full-stack features for a network serving 1M+ users, instrumented with Datadog.",
   },
   {
     company: "Creative Buffer",
     role: "Software Engineer",
-    period: "Nov 2024 - Apr 2026",
+    period: "Nov 2024 — Apr 2026",
     summary:
       "Built production full-stack systems across healthcare, analytics, and AI, including AWS ECS with Terraform and OpenTelemetry and a RAG pipeline on Pinecone, while mentoring junior engineers.",
   },
   {
     company: "Girl Power Talk",
     role: "Web Developer",
-    period: "Oct 2022 - Jul 2024",
+    period: "Oct 2022 — Jul 2024",
     summary:
       "Shipped Next.js, TypeScript, and Prisma products; cut profile-page load times by ~50% with server-side rendering and caching; crafted motion with GSAP and Framer Motion.",
   },
+];
+
+export const stack: StackArea[] = [
+  {
+    area: "Frontend",
+    tools: ["React", "Next.js", "React Native", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    area: "Backend & AI",
+    tools: ["Node.js", "Python", "FastAPI", "Postgres", "Redis", "RAG"],
+  },
+  {
+    area: "Infrastructure",
+    tools: ["AWS", "Docker", "Terraform", "OpenTelemetry", "CI/CD"],
+  },
+];
+
+export const socials: Social[] = [
+  { label: "GitHub", href: "https://github.com/itsajaygaur" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/itsajaygaur" },
+  { label: "Résumé", href: "/ajay-gaur.pdf" },
 ];
