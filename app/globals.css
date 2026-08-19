@@ -1,43 +1,39 @@
 /* ------------------------------------------------------------------
-   Design tokens
+   Tokens
+
+   Two text tones, one line colour, one typeface. Hierarchy comes from
+   position, colour, and space — never from size jumps or weight.
 ------------------------------------------------------------------ */
 
 :root {
   --bg: #fcfcfc;
-  --bg-subtle: #f4f4f4;
   --fg: #111111;
-  --fg-muted: #6b6b6b;
-  --fg-faint: #8a8a8a;
+  --fg-muted: #6f6f6f;
   --line: #e6e6e6;
-  --line-strong: #111111;
-  --ok: #16a34a;
-  --error: #dc2626;
+  --error: #b42318;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
   --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-h2: clamp(1.5rem, 3vw, 1.9rem);
-  --text-h1: clamp(2.25rem, 5.5vw, 3.25rem);
+  --text-lead: 1.25rem;
 
-  --tracking-label: 0.08em;
+  --container: min(100% - 3rem, 48rem);
+  --rail: 7.5rem;
+  --gutter: 3rem;
+  --measure: 34rem;
+  --section-gap: clamp(4rem, 9vh, 6rem);
+  --row-gap: 1.75rem;
 
-  --container: min(100% - 3rem, 42.5rem);
-  --section-gap: clamp(5rem, 12vh, 8rem);
-  --header-h: 64px;
-  --radius: 6px;
+  --radius: 3px;
+  --duration: 150ms;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .dark {
-  --bg: #0a0a0a;
-  --bg-subtle: #161616;
+  --bg: #0b0b0b;
   --fg: #ededed;
-  --fg-muted: #9a9a9a;
-  --fg-faint: #7a7a7a;
-  --line: #232323;
-  --line-strong: #ededed;
-  --ok: #4ade80;
+  --fg-muted: #8f8f8f;
+  --line: #242424;
   --error: #f87171;
 }
 
@@ -55,28 +51,32 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 1.5rem);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  /* next/font defines --font-sans / --font-mono on <body>, so the stacks
-     must be assembled here — at :root those variables don't exist yet. */
+  /* next/font defines --font-sans on <body>, so the stack must be
+     assembled here — at :root that variable does not exist yet. */
   --font-sans-stack: var(--font-sans), "Arial", sans-serif;
-  --font-mono-stack: var(--font-mono), "Courier New", monospace;
 
   font-family: var(--font-sans-stack);
   font-size: var(--text-base);
-  line-height: 1.7;
+  line-height: 1.65;
   background: var(--bg);
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
-  transition: background-color 180ms var(--ease), color 180ms var(--ease);
 }
 
-::selection {
-  background: var(--fg);
-  color: var(--bg);
+h1,
+h2,
+h3 {
+  font-size: inherit;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -103,18 +103,15 @@ svg {
   max-width: 100%;
 }
 
-:focus-visible {
-  outline: 2px solid var(--fg);
-  outline-offset: 3px;
-  border-radius: 2px;
+::selection {
+  background: var(--fg);
+  color: var(--bg);
 }
 
-h1,
-h2,
-h3 {
-  font-weight: 600;
-  line-height: 1.2;
-  text-wrap: balance;
+:focus-visible {
+  outline: 1.5px solid var(--fg);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .skip-link {
@@ -126,7 +123,7 @@ h3 {
   background: var(--fg);
   color: var(--bg);
   border-radius: var(--radius);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   transform: translateY(-300%);
   transition: transform 0.2s var(--ease);
 }
@@ -135,127 +132,81 @@ h3 {
   transform: translateY(0);
 }
 
-/* Shared text patterns */
+/* ------------------------------------------------------------------
+   Links
 
-.mono {
-  font-family: var(--font-mono-stack);
+   .link       — reads as a link at rest (hairline rule underneath)
+   .link-quiet — muted until hovered; used for lists of secondary links
+------------------------------------------------------------------ */
+
+.link {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+  transition: border-color var(--duration) var(--ease);
 }
 
-.section-label {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
-  color: var(--fg-faint);
+.link:hover {
+  border-bottom-color: currentColor;
 }
 
-/* Underline link — grows from left on hover */
+.link-quiet {
+  color: var(--fg-muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
 
-.text-link {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  font-size: var(--text-sm);
+.link-quiet:hover {
   color: var(--fg);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 1px;
-  padding-bottom: 2px;
-  transition: opacity 0.2s var(--ease);
-}
-
-.text-link:hover {
-  opacity: 0.7;
+  border-bottom-color: var(--line);
 }
 
 /* ------------------------------------------------------------------
-   Header
+   Header — static, scrolls away with the page
 ------------------------------------------------------------------ */
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  height: var(--header-h);
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
-  transition: background-color 180ms var(--ease), border-color 180ms var(--ease);
-}
-
-.nav {
   width: var(--container);
-  height: 100%;
   margin-inline: auto;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 0.75rem 1.5rem;
+  padding-block: 1.75rem;
 }
 
 .brand {
-  font-weight: 600;
-  font-size: var(--text-base);
-  letter-spacing: -0.01em;
-}
-
-.nav__links {
-  display: none;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-.nav__links a {
   font-size: var(--text-sm);
-  color: var(--fg-muted);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  padding-bottom: 2px;
-  transition: color 0.2s var(--ease), background-size 0.25s var(--ease);
+  font-weight: 500;
+  letter-spacing: -0.011em;
 }
 
-.nav__links a:hover {
-  color: var(--fg);
-  background-size: 100% 1px;
-}
-
-.nav__actions {
+.site-header__actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.25rem;
 }
 
-.nav__resume {
-  display: none;
-  font-family: var(--font-mono-stack);
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
   font-size: var(--text-xs);
-  color: var(--fg-muted);
-  transition: color 0.2s var(--ease);
-}
-
-.nav__resume:hover {
-  color: var(--fg);
 }
 
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius);
+  width: 1.25rem;
+  height: 1.25rem;
   color: var(--fg-muted);
-  transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
+  transition: color var(--duration) var(--ease);
 }
 
 .theme-toggle:hover {
   color: var(--fg);
-  background: var(--bg-subtle);
 }
 
 .theme-toggle .icon-sun {
@@ -270,94 +221,12 @@ h3 {
   display: none;
 }
 
-@media (min-width: 768px) {
-  .nav__links {
-    display: flex;
-  }
-
-  .nav__resume {
-    display: inline-flex;
-  }
-}
-
-/* Mobile menu */
-
-.menu-toggle {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius);
-}
-
-.menu-toggle span {
-  display: block;
-  width: 16px;
-  height: 1.5px;
-  margin-inline: auto;
-  background: var(--fg);
-  transition: transform 0.25s var(--ease);
-}
-
-.menu-toggle[aria-expanded="true"] span:first-child {
-  transform: translateY(3.25px) rotate(45deg);
-}
-
-.menu-toggle[aria-expanded="true"] span:last-child {
-  transform: translateY(-3.25px) rotate(-45deg);
-}
-
-@media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
-}
-
-.mobile-menu {
-  position: fixed;
-  inset: var(--header-h) 0 0 0;
-  z-index: 40;
-  background: var(--bg);
-  padding: 2.5rem 1.5rem;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease),
-    visibility 0.25s;
-}
-
-.mobile-menu[data-open="true"] {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.mobile-menu nav {
-  display: flex;
-  flex-direction: column;
-}
-
-.mobile-menu nav a {
-  padding: 1rem 0;
-  font-size: 1.375rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  border-bottom: 1px solid var(--line);
-}
-
-.mobile-menu .mobile-menu__resume {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-sm);
-  font-weight: 400;
-  color: var(--fg-muted);
-  border-bottom: 0;
-  padding-top: 1.5rem;
-}
-
 /* ------------------------------------------------------------------
-   Page shell
+   Shell and sections
+
+   Each section is a two-column grid: a small label pinned in the left
+   rail, content in the right column. The rail, the hairline, and the
+   vertical gap are the only things separating one section from the next.
 ------------------------------------------------------------------ */
 
 .page-shell {
@@ -365,445 +234,169 @@ h3 {
   margin-inline: auto;
 }
 
-main {
-  padding-bottom: var(--section-gap);
-}
-
-/* ------------------------------------------------------------------
-   Hero
------------------------------------------------------------------- */
-
-.hero {
-  padding-top: clamp(4rem, 10vh, 6.5rem);
-}
-
-.hero__status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
-  color: var(--fg-muted);
-}
-
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ok);
-}
-
-.hero h1 {
-  margin-top: 1.5rem;
-  font-size: var(--text-h1);
-  letter-spacing: -0.035em;
-  line-height: 1.1;
-}
-
-.hero h1 em {
-  font-style: italic;
-  font-weight: 400;
-}
-
-.hero__intro {
-  margin-top: 1.5rem;
-  max-width: 34rem;
-  font-size: var(--text-lg);
-  color: var(--fg-muted);
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 2.25rem;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.35rem;
-  border-radius: 999px;
-  background: var(--fg);
-  color: var(--bg);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  transition: opacity 0.2s var(--ease);
-}
-
-.button:hover {
-  opacity: 0.85;
-}
-
-.button .glyph,
-.text-link .glyph {
-  transition: transform 0.2s var(--ease);
-}
-
-.button:hover .glyph {
-  transform: translateY(2px);
-}
-
-.text-link:hover .glyph {
-  transform: translate(2px, -2px);
-}
-
-.hero__meta {
-  display: grid;
-  gap: 1.25rem;
-  margin-top: 3.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
-}
-
-.hero__meta div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.hero__meta span {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
-  color: var(--fg-faint);
-}
-
-.hero__meta strong {
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
-@media (min-width: 640px) {
-  .hero__meta {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ------------------------------------------------------------------
-   Sections
------------------------------------------------------------------- */
-
+/* The section's own top padding provides the clearance an anchor jump needs,
+   so scroll-margin only has to keep the rule off the viewport edge. */
 .section {
+  display: grid;
+  row-gap: 1.25rem;
+  scroll-margin-top: 1rem;
+}
+
+.section + .section {
   margin-top: var(--section-gap);
-}
-
-.section-heading {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 2.75rem;
-}
-
-.section-heading h2 {
-  font-size: var(--text-h2);
-  letter-spacing: -0.02em;
-}
-
-.section-heading > p {
-  max-width: 30rem;
-  color: var(--fg-muted);
-}
-
-/* ------------------------------------------------------------------
-   Selected work
------------------------------------------------------------------- */
-
-.featured-list {
+  padding-top: var(--section-gap);
   border-top: 1px solid var(--line);
 }
 
-.featured {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  padding: 2.25rem 0;
-  border-bottom: 1px solid var(--line);
+.section--intro {
+  padding-top: clamp(3rem, 8vh, 5rem);
 }
 
-.featured__index {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  color: var(--fg-faint);
-}
-
-.featured h3 {
-  font-size: var(--text-lg);
-  font-weight: 500;
-}
-
-.featured p {
-  color: var(--fg-muted);
-  max-width: 36rem;
-}
-
-.featured__stack {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  color: var(--fg-faint);
-}
-
-.featured__links {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 0.35rem;
-}
-
-.featured__links a {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35rem;
-  font-family: var(--font-mono-stack);
+.section__label {
   font-size: var(--text-xs);
   color: var(--fg);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  padding-bottom: 2px;
-  transition: background-size 0.25s var(--ease);
-}
-
-.featured__links a:hover {
-  background-size: 100% 1px;
-}
-
-.featured__links a .glyph {
-  transition: transform 0.2s var(--ease);
-}
-
-.featured__links a:hover .glyph {
-  transform: translate(2px, -2px);
-}
-
-/* Compact rows */
-
-.more-work {
-  margin-top: 3.5rem;
-}
-
-.more-work > h3 {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
-  color: var(--fg-faint);
-  margin-bottom: 0.75rem;
-}
-
-.project-rows {
-  border-top: 1px solid var(--line);
-}
-
-.project-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.project-row__main {
-  flex: 1;
-  min-width: 0;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: 1rem;
-  row-gap: 0.35rem;
-  align-items: baseline;
-  padding: 1.1rem 0;
-  transition: background-color 0.2s var(--ease);
-}
-
-.project-row:hover {
-  background: var(--bg-subtle);
-  box-shadow: -1rem 0 0 var(--bg-subtle), 1rem 0 0 var(--bg-subtle);
-}
-
-.project-row__title {
-  grid-column: 1;
-  grid-row: 1;
-  font-size: var(--text-sm);
-  font-weight: 500;
-}
-
-.project-row__desc {
-  grid-column: 1;
-  grid-row: 2;
-  min-width: 0;
-  font-size: var(--text-sm);
-  color: var(--fg-muted);
-}
-
-.project-row__arrow {
-  grid-column: 2;
-  grid-row: 1;
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-sm);
-  color: var(--fg-faint);
-  transition: transform 0.2s var(--ease), color 0.2s var(--ease);
-}
-
-.project-row:hover .project-row__arrow {
-  transform: translate(2px, -2px);
-  color: var(--fg);
-}
-
-.project-row__source {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  color: var(--fg-faint);
-  white-space: nowrap;
-  padding: 1.1rem 0;
-  transition: color 0.2s var(--ease);
-}
-
-.project-row__source:hover {
-  color: var(--fg);
-}
-
-/* ------------------------------------------------------------------
-   Experience
------------------------------------------------------------------- */
-
-.timeline {
-  border-top: 1px solid var(--line);
-}
-
-.timeline__item {
-  display: grid;
-  gap: 0.5rem;
-  padding: 1.75rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.timeline__period {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  color: var(--fg-faint);
-  padding-top: 0.2rem;
-}
-
-.timeline__body h3 {
-  font-size: var(--text-lg);
-  font-weight: 500;
-}
-
-.timeline__company {
-  color: var(--fg-muted);
-  font-weight: 400;
-}
-
-.timeline__body p {
-  margin-top: 0.5rem;
-  color: var(--fg-muted);
-  font-size: var(--text-sm);
-  line-height: 1.7;
-}
-
-@media (min-width: 640px) {
-  .timeline__item {
-    grid-template-columns: 10rem 1fr;
-    gap: 1.5rem;
-  }
-}
-
-/* ------------------------------------------------------------------
-   Expertise
------------------------------------------------------------------- */
-
-.capability-grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.capability {
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
-}
-
-.capability > span {
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  color: var(--fg-faint);
-}
-
-.capability h3 {
-  margin-top: 0.75rem;
-  font-size: var(--text-base);
-  font-weight: 500;
-}
-
-.capability p {
-  margin-top: 0.5rem;
-  font-size: var(--text-sm);
-  color: var(--fg-muted);
-}
-
-.capability small {
-  display: block;
-  margin-top: 1rem;
-  font-family: var(--font-mono-stack);
-  font-size: var(--text-xs);
-  color: var(--fg-faint);
 }
 
 @media (min-width: 768px) {
-  .capability-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .section {
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: var(--gutter);
+    row-gap: 0;
   }
+
+  /* The intro has no label, but its content still starts on the same
+     left edge as every section below it. */
+  .section--intro .section__body {
+    grid-column: 2;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Intro
+------------------------------------------------------------------ */
+
+.intro__name {
+  font-size: var(--text-base);
+  letter-spacing: -0.011em;
+}
+
+.intro__role {
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+}
+
+.intro__lead {
+  margin-top: 1.75rem;
+  max-width: var(--measure);
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  letter-spacing: -0.011em;
+}
+
+/* A hairline in --line disappears under 20px text, so links in the lead
+   carry a slightly stronger rule to stay recognisable. */
+.intro__lead .link {
+  border-bottom-color: var(--fg-muted);
+}
+
+.intro__meta {
+  margin-top: 1.75rem;
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
+}
+
+/* ------------------------------------------------------------------
+   Rows
+
+   One grammar for every list on the page: a title with optional
+   right-aligned meta, a description, and an optional detail line.
+   Work, experience, and stack are the same component at three densities.
+------------------------------------------------------------------ */
+
+.list {
+  display: grid;
+}
+
+.list__item {
+  padding-block: var(--row-gap);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Flush at both ends so the first row aligns with the rail label and the
+   last row does not double up with the next section's rule. */
+.list__item:first-child {
+  padding-top: 0;
+}
+
+.list__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.row__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+}
+
+.row__title {
+  font-size: var(--text-base);
+}
+
+.row__meta {
+  display: flex;
+  gap: 1rem;
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
+}
+
+.row__desc {
+  margin-top: 0.5rem;
+  max-width: var(--measure);
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+}
+
+.row__detail {
+  margin-top: 0.75rem;
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
 }
 
 /* ------------------------------------------------------------------
    Contact
 ------------------------------------------------------------------ */
 
-.contact__intro > p:not(.section-label) {
-  max-width: 30rem;
+.contact__note {
+  max-width: var(--measure);
+  font-size: var(--text-sm);
   color: var(--fg-muted);
 }
 
-.contact-email {
+.contact__email {
   display: inline-block;
   margin-top: 1.25rem;
-  font-size: var(--text-lg);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 1px;
-  padding-bottom: 2px;
-  transition: opacity 0.2s var(--ease);
-}
-
-.contact-email:hover {
-  opacity: 0.7;
+  font-size: var(--text-base);
 }
 
 .contact-form {
   display: grid;
-  gap: 2rem;
+  gap: 1.75rem;
   margin-top: 3rem;
+  max-width: var(--measure);
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .field label {
-  font-family: var(--font-mono-stack);
   font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
-  color: var(--fg-faint);
+  color: var(--fg-muted);
 }
 
 .field input,
@@ -815,31 +408,39 @@ main {
   border: 0;
   border-bottom: 1px solid var(--line);
   border-radius: 0;
-  padding: 0.6rem 0;
-  transition: border-color 0.2s var(--ease);
+  padding: 0.5rem 0;
+  transition: border-color var(--duration) var(--ease);
 }
 
 .field textarea {
   resize: vertical;
-  min-height: 7rem;
+  min-height: 6rem;
   line-height: 1.6;
 }
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: var(--fg-faint);
+  color: var(--fg-muted);
+  opacity: 0.6;
 }
 
+/* Doubled to 2px so the focused field stays obvious against the hairline. */
 .field input:focus-visible,
 .field textarea:focus-visible {
   outline: none;
-  border-bottom-color: var(--line-strong);
-  box-shadow: 0 1px 0 0 var(--line-strong);
+  border-bottom-color: var(--fg);
+  box-shadow: 0 1px 0 0 var(--fg);
 }
 
 .field input[aria-invalid="true"],
 .field textarea[aria-invalid="true"] {
   border-bottom-color: var(--error);
+}
+
+.field input[aria-invalid="true"]:focus-visible,
+.field textarea[aria-invalid="true"]:focus-visible {
+  border-bottom-color: var(--error);
+  box-shadow: 0 1px 0 0 var(--error);
 }
 
 .field__error {
@@ -851,14 +452,13 @@ main {
   justify-self: start;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.35rem;
-  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius);
   background: var(--fg);
   color: var(--bg);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: 500;
-  transition: opacity 0.2s var(--ease);
+  transition: opacity var(--duration) var(--ease);
 }
 
 .submit-button:hover {
@@ -870,107 +470,31 @@ main {
   cursor: default;
 }
 
-@media (min-width: 640px) {
-  .contact-form {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .field--full,
-  .submit-button {
-    grid-column: 1 / -1;
-  }
-}
-
 /* ------------------------------------------------------------------
    Footer
 ------------------------------------------------------------------ */
 
 .footer {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
   margin-top: var(--section-gap);
-  padding: 2rem 0 2.5rem;
+  padding: 1.75rem 0 3rem;
   border-top: 1px solid var(--line);
-  font-family: var(--font-mono-stack);
   font-size: var(--text-xs);
   color: var(--fg-muted);
 }
 
 .footer__links {
   display: flex;
-  gap: 1.5rem;
-}
-
-.footer a {
-  color: var(--fg-muted);
-  transition: color 0.2s var(--ease);
-}
-
-.footer a:hover {
-  color: var(--fg);
-}
-
-@media (min-width: 640px) {
-  .footer {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+  gap: 1.25rem;
 }
 
 /* ------------------------------------------------------------------
-   Motion
+   Motion — hover and focus only
 ------------------------------------------------------------------ */
-
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.reveal {
-  animation: rise-in 0.6s var(--ease) both;
-}
-
-.reveal--delay-1 {
-  animation-delay: 80ms;
-}
-
-.reveal--delay-2 {
-  animation-delay: 160ms;
-}
-
-.reveal--delay-3 {
-  animation-delay: 240ms;
-}
-
-/* Scroll reveal — only hides content once JS confirms motion is allowed */
-
-html.js-reveal [data-reveal] {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-}
-
-html.js-reveal [data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-html.js-reveal [data-reveal]:nth-child(2) {
-  transition-delay: 60ms;
-}
-
-html.js-reveal [data-reveal]:nth-child(3) {
-  transition-delay: 120ms;
-}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -983,11 +507,5 @@ html.js-reveal [data-reveal]:nth-child(3) {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
-  }
-
-  html.js-reveal [data-reveal] {
-    opacity: 1;
-    transform: none;
   }
 }

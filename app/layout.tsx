@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
 import { ProvideTheme } from "./providers";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/nav";
-import ScrollReveal from "@/components/scroll-reveal";
+import Footer from "@/components/footer";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
@@ -18,21 +18,14 @@ const geist = Geist({
   fallback: ["Arial", "sans-serif"],
 });
 
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-mono",
-  fallback: ["Courier New", "monospace"],
-});
-
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: "Ajay Gaur - Full-stack Engineer",
+    default: "Ajay Gaur — Full-stack engineer",
     template: "%s | Ajay Gaur",
   },
   description:
-    "Ajay Gaur is a full-stack engineer designing and building thoughtful digital products from interface to infrastructure.",
+    "Ajay Gaur is a full-stack engineer building products for web and mobile, from interface to infrastructure.",
   keywords: [
     "Ajay Gaur",
     "full-stack engineer",
@@ -43,23 +36,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Ajay Gaur - Full-stack Engineer",
-    description: "Designing and building thoughtful digital products.",
+    title: "Ajay Gaur — Full-stack engineer",
+    description: "Building products for web and mobile.",
     siteName: "Ajay Gaur",
     images: [
       {
         url: new URL("/og.png", siteUrl),
         width: 1200,
         height: 630,
-        alt: "Ajay Gaur - Full-stack engineer",
+        alt: "Ajay Gaur — Full-stack engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@itsajaygaur",
-    title: "Ajay Gaur - Full-stack Engineer",
-    description: "Designing and building thoughtful digital products.",
+    title: "Ajay Gaur — Full-stack engineer",
+    description: "Building products for web and mobile.",
     images: [new URL("/og.png", siteUrl)],
   },
   robots: {
@@ -80,7 +73,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body id="top" className={`${geist.variable} ${geistMono.variable}`}>
+      <body id="top" className={geist.variable}>
         <ProvideTheme>
           <a className="skip-link" href="#main-content">
             Skip to content
@@ -88,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <div className="page-shell">
             <main id="main-content">{children}</main>
+            <Footer />
           </div>
           <Toaster
             position="bottom-center"
@@ -96,14 +90,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 background: "var(--bg)",
                 color: "var(--fg)",
                 border: "1px solid var(--line)",
-                borderRadius: "6px",
+                borderRadius: "3px",
                 boxShadow: "none",
                 fontSize: "0.875rem",
               },
             }}
           />
         </ProvideTheme>
-        <ScrollReveal />
         <Analytics />
       </body>
     </html>
