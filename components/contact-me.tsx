@@ -41,15 +41,16 @@ export default function ContactMe() {
         name="name"
         render={({ field, fieldState }) => (
           <div className="field">
-            <label htmlFor="contact-name">Your name</label>
+            <label htmlFor="contact-name">Name</label>
             <input
               {...field}
               id="contact-name"
               type="text"
               autoComplete="name"
-              placeholder="Jane Smith"
               aria-invalid={fieldState.invalid}
-              aria-describedby={fieldState.error ? "contact-name-error" : undefined}
+              aria-describedby={
+                fieldState.error ? "contact-name-error" : undefined
+              }
             />
             {fieldState.error ? (
               <span className="field__error" id="contact-name-error">
@@ -65,16 +66,17 @@ export default function ContactMe() {
         name="email"
         render={({ field, fieldState }) => (
           <div className="field">
-            <label htmlFor="contact-email">Email address</label>
+            <label htmlFor="contact-email">Email</label>
             <input
               {...field}
               id="contact-email"
               type="email"
               autoComplete="email"
               inputMode="email"
-              placeholder="jane@company.com"
               aria-invalid={fieldState.invalid}
-              aria-describedby={fieldState.error ? "contact-email-error" : undefined}
+              aria-describedby={
+                fieldState.error ? "contact-email-error" : undefined
+              }
             />
             {fieldState.error ? (
               <span className="field__error" id="contact-email-error">
@@ -89,15 +91,16 @@ export default function ContactMe() {
         control={control}
         name="message"
         render={({ field, fieldState }) => (
-          <div className="field field--full">
-            <label htmlFor="contact-message">A little about the project</label>
+          <div className="field">
+            <label htmlFor="contact-message">Message</label>
             <textarea
               {...field}
               id="contact-message"
               rows={5}
-              placeholder="What are you hoping to build?"
               aria-invalid={fieldState.invalid}
-              aria-describedby={fieldState.error ? "contact-message-error" : undefined}
+              aria-describedby={
+                fieldState.error ? "contact-message-error" : undefined
+              }
             />
             {fieldState.error ? (
               <span className="field__error" id="contact-message-error">
@@ -110,7 +113,6 @@ export default function ContactMe() {
 
       <button className="submit-button" type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Sending…" : "Send message"}
-        <span aria-hidden="true">↗</span>
       </button>
     </form>
   );
