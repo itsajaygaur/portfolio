@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Space_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
@@ -7,19 +7,23 @@ import { ProvideTheme } from "./providers";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/nav";
 import ScrollReveal from "@/components/scroll-reveal";
+import SiteFooter from "@/components/site-footer";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
 
-const geist = Geist({
+// Archivo carries a `wdth` axis — display type is set expanded, body at normal width.
+const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
+  axes: ["wdth"],
   variable: "--font-sans",
   fallback: ["Arial", "sans-serif"],
 });
 
-const geistMono = Geist_Mono({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
   variable: "--font-mono",
   fallback: ["Courier New", "monospace"],
@@ -80,28 +84,29 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body id="top" className={`${geist.variable} ${geistMono.variable}`}>
+      <body id="top" className={`${archivo.variable} ${spaceMono.variable}`}>
         <ProvideTheme>
           <a className="skip-link" href="#main-content">
             Skip to content
           </a>
           <Navbar />
-          <div className="page-shell">
-            <main id="main-content">{children}</main>
-          </div>
+          <main id="main-content">{children}</main>
+          <SiteFooter />
           <Toaster
             position="bottom-center"
             toastOptions={{
               style: {
-                background: "var(--bg)",
-                color: "var(--fg)",
-                border: "1px solid var(--line)",
-                borderRadius: "6px",
-                boxShadow: "none",
-                fontSize: "0.875rem",
+                background: "var(--paper)",
+                color: "var(--ink)",
+                border: "2px solid var(--ink)",
+                borderRadius: "0",
+                boxShadow: "4px 4px 0 var(--ink)",
+                fontFamily: "var(--font-mono), monospace",
+                fontSize: "0.8125rem",
               },
             }}
           />
+          <div className="grain" aria-hidden="true" />
         </ProvideTheme>
         <ScrollReveal />
         <Analytics />
