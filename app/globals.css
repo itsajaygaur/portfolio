@@ -489,7 +489,13 @@ svg {
 
 .footer__links {
   display: flex;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+/* Keep each label and its ↗ together when the row wraps. */
+.footer__links a {
+  white-space: nowrap;
 }
 
 /* ------------------------------------------------------------------
