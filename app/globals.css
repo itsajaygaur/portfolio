@@ -162,6 +162,24 @@ svg {
   border-bottom-color: var(--line);
 }
 
+/* Trailing arrows are drawn, not typed. U+2197 is absent from Geist, so the
+   browser fell through to whatever face on the device covered it — an emoji
+   font on most phones — and the glyph came out a different size on a real
+   device than on desktop. An SVG sized in `em` renders identically
+   everywhere and tracks the label it follows.
+
+   The inline-start margin stands in for the space that used to separate
+   label from arrow: with no whitespace between them there is no break
+   opportunity, so the pair can never wrap apart. */
+.icon-arrow {
+  display: inline-block; /* the global rule above sets svg { display: block } */
+  width: 0.85em;
+  height: 0.85em;
+  vertical-align: baseline;
+  margin-inline-start: 0.28em;
+  flex: none;
+}
+
 /* ------------------------------------------------------------------
    Header — static, scrolls away with the page
 ------------------------------------------------------------------ */
@@ -493,7 +511,7 @@ svg {
   gap: 0.5rem 1.25rem;
 }
 
-/* Keep each label and its ↗ together when the row wraps. */
+/* Guard multi-word labels against splitting when the row wraps. */
 .footer__links a {
   white-space: nowrap;
 }
