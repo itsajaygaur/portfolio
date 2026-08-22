@@ -1,3 +1,4 @@
+import { ArrowUp, ArrowUpRight } from "@/components/icons";
 import { profile, socials } from "@/constants/data";
 
 export default function Footer() {
@@ -16,13 +17,15 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            {social.label} <span aria-hidden="true">↗</span>
+            {social.label}
+            <ArrowUpRight />
           </a>
         ))}
       </div>
 
       <a className="link-quiet" href="#top">
-        Back to top <span aria-hidden="true">↑</span>
+        Back to top
+        <ArrowUp />
       </a>
     </footer>
   );
