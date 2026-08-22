@@ -3,13 +3,18 @@ import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import "./globals.css";
-import { ProvideTheme } from "./providers";
-import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/nav";
 import Footer from "@/components/footer";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
+
+/* Runs before first paint so the correct theme is in place with no flash.
+   Always writes an explicit class, which keeps the .dark selectors in
+   globals.css authoritative for both tokens and the toggle's icons. */
+const themeScript = `(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}\
+if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}\
+document.documentElement.classList.add(t)})()`;
 
 const geist = Geist({
   subsets: ["latin"],
@@ -80,30 +85,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body id="top" className={geist.variable}>
-        <ProvideTheme>
-          <a className="skip-link" href="#main-content">
-            Skip to content
-          </a>
-          <Navbar />
-          <div className="page-shell">
-            <main id="main-content">{children}</main>
-            <Footer />
-          </div>
-          <Toaster
-            position="bottom-center"
-            toastOptions={{
-              style: {
-                background: "var(--bg)",
-                color: "var(--fg)",
-                border: "1px solid var(--line)",
-                borderRadius: "3px",
-                boxShadow: "none",
-                fontSize: "0.875rem",
-              },
-            }}
-          />
-        </ProvideTheme>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <Navbar />
+        <div className="page-shell">
+          <main id="main-content">{children}</main>
+          <Footer />
+        </div>
         <Analytics />
       </body>
     </html>
