@@ -1,4 +1,5 @@
 import ContactMe from "@/components/contact-me";
+import { ArrowUpRight } from "@/components/icons";
 import { experience, profile, projects, stack } from "@/constants/data";
 
 export default function Home() {
@@ -32,7 +33,8 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              Résumé <span aria-hidden="true">↗</span>
+              Résumé
+              <ArrowUpRight />
             </a>
           </p>
         </div>
@@ -57,7 +59,8 @@ export default function Home() {
                       rel="noreferrer"
                       aria-label={`Live site — ${project.title}`}
                     >
-                      Live <span aria-hidden="true">↗</span>
+                      Live
+                      <ArrowUpRight />
                     </a>
                     {project.github ? (
                       <a
@@ -67,7 +70,8 @@ export default function Home() {
                         rel="noreferrer"
                         aria-label={`Source code — ${project.title}`}
                       >
-                        Source <span aria-hidden="true">↗</span>
+                        Source
+                        <ArrowUpRight />
                       </a>
                     ) : null}
                   </div>
