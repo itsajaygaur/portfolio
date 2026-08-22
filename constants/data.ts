@@ -104,23 +104,6 @@ export const projects: Project[] = [
     github: "https://github.com/itsajaygaur/ecommerce",
     stack: ["Next.js", "TypeScript", "Postgres"],
   },
-  {
-    id: 13,
-    title: "Next-Gen AI Voice Translator",
-    description:
-      "An AI-powered voice translation app for fast, accurate real-time language conversion.",
-    link: "https://nao-translator-lime.vercel.app",
-    github: "https://github.com/itsajaygaur/nao-translator",
-    stack: ["Next.js", "AI SDK"],
-  },
-  {
-    id: 14,
-    title: "Best Medical University Services",
-    description:
-      "A modern marketing site with all content seamlessly managed through a headless CMS.",
-    link: "https://bmus.co.in",
-    stack: ["Next.js", "Sanity CMS"],
-  },
 ];
 
 export const experience: Experience[] = [
@@ -165,5 +148,7 @@ export const stack: StackArea[] = [
 export const socials: Social[] = [
   { label: "GitHub", href: "https://github.com/itsajaygaur" },
   { label: "LinkedIn", href: "https://linkedin.com/in/itsajaygaur" },
+  { label: "X", href: "https://x.com/itsajaygaur" },
+  { label: "Farcaster", href: "https://farcaster.xyz/ajy" },
   { label: "Résumé", href: "/ajay-gaur.pdf" },
 ];
