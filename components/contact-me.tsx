@@ -1,119 +1,92 @@
 "use client";
 
-import { Controller, useForm } from "react-hook-form";
-import type { ContactForm } from "@/types/zod-schemas";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { contactFormSchema } from "@/types/zod-schemas";
+import { useActionState } from "react";
 import { submitContactForm } from "@/app/actions";
-import toast from "react-hot-toast";
+import type { ContactFormState } from "@/app/actions";
+
+const initialState: ContactFormState = { status: "idle", message: "" };
 
 export default function ContactMe() {
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { isSubmitting },
-  } = useForm<ContactForm>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: { name: "", email: "", message: "" },
-  });
+  const [state, formAction, isSubmitting] = useActionState(
+    submitContactForm,
+    initialState,
+  );
 
-  async function onSubmit(data: ContactForm) {
-    try {
-      const response = await submitContactForm(data);
-
-      if (response.success) {
-        toast.success(response.message);
-        reset();
-        return;
-      }
-
-      toast.error(response.message || "Something went wrong. Try again later.");
-    } catch {
-      toast.error("Something went wrong. Try again later.");
-    }
-  }
+  const { errors, values } = state;
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <Controller
-        control={control}
-        name="name"
-        render={({ field, fieldState }) => (
-          <div className="field">
-            <label htmlFor="contact-name">Name</label>
-            <input
-              {...field}
-              id="contact-name"
-              type="text"
-              autoComplete="name"
-              aria-invalid={fieldState.invalid}
-              aria-describedby={
-                fieldState.error ? "contact-name-error" : undefined
-              }
-            />
-            {fieldState.error ? (
-              <span className="field__error" id="contact-name-error">
-                {fieldState.error.message}
-              </span>
-            ) : null}
-          </div>
-        )}
-      />
+    <form className="contact-form" action={formAction}>
+      <div className="field">
+        <label htmlFor="contact-name">Name</label>
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          autoComplete="name"
+          required
+          defaultValue={values?.name}
+          aria-invalid={Boolean(errors?.name)}
+          aria-describedby={errors?.name ? "contact-name-error" : undefined}
+        />
+        {errors?.name ? (
+          <span className="field__error" id="contact-name-error">
+            {errors.name}
+          </span>
+        ) : null}
+      </div>
 
-      <Controller
-        control={control}
-        name="email"
-        render={({ field, fieldState }) => (
-          <div className="field">
-            <label htmlFor="contact-email">Email</label>
-            <input
-              {...field}
-              id="contact-email"
-              type="email"
-              autoComplete="email"
-              inputMode="email"
-              aria-invalid={fieldState.invalid}
-              aria-describedby={
-                fieldState.error ? "contact-email-error" : undefined
-              }
-            />
-            {fieldState.error ? (
-              <span className="field__error" id="contact-email-error">
-                {fieldState.error.message}
-              </span>
-            ) : null}
-          </div>
-        )}
-      />
+      <div className="field">
+        <label htmlFor="contact-email">Email</label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          inputMode="email"
+          required
+          defaultValue={values?.email}
+          aria-invalid={Boolean(errors?.email)}
+          aria-describedby={errors?.email ? "contact-email-error" : undefined}
+        />
+        {errors?.email ? (
+          <span className="field__error" id="contact-email-error">
+            {errors.email}
+          </span>
+        ) : null}
+      </div>
 
-      <Controller
-        control={control}
-        name="message"
-        render={({ field, fieldState }) => (
-          <div className="field">
-            <label htmlFor="contact-message">Message</label>
-            <textarea
-              {...field}
-              id="contact-message"
-              rows={5}
-              aria-invalid={fieldState.invalid}
-              aria-describedby={
-                fieldState.error ? "contact-message-error" : undefined
-              }
-            />
-            {fieldState.error ? (
-              <span className="field__error" id="contact-message-error">
-                {fieldState.error.message}
-              </span>
-            ) : null}
-          </div>
-        )}
-      />
+      <div className="field">
+        <label htmlFor="contact-message">Message</label>
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={5}
+          required
+          defaultValue={values?.message}
+          aria-invalid={Boolean(errors?.message)}
+          aria-describedby={errors?.message ? "contact-message-error" : undefined}
+        />
+        {errors?.message ? (
+          <span className="field__error" id="contact-message-error">
+            {errors.message}
+          </span>
+        ) : null}
+      </div>
 
       <button className="submit-button" type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Sending…" : "Send message"}
       </button>
+
+      {state.message ? (
+        <p
+          className="form-status"
+          data-status={state.status}
+          role="status"
+          aria-live="polite"
+        >
+          {state.message}
+        </p>
+      ) : null}
     </form>
   );
 }
