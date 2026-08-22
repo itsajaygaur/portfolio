@@ -37,6 +37,18 @@
   --error: #f87171;
 }
 
+/* Without JavaScript no explicit class is set, so system preference has to
+   be honoured in CSS. An explicit .light choice always opts back out. */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --bg: #0b0b0b;
+    --fg: #ededed;
+    --fg-muted: #8f8f8f;
+    --line: #242424;
+    --error: #f87171;
+  }
+}
+
 /* ------------------------------------------------------------------
    Base
 ------------------------------------------------------------------ */
@@ -237,6 +249,16 @@ svg {
 
 .dark .theme-toggle .icon-moon {
   display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) .theme-toggle .icon-sun {
+    display: block;
+  }
+
+  :root:not(.light) .theme-toggle .icon-moon {
+    display: none;
+  }
 }
 
 /* ------------------------------------------------------------------
@@ -463,6 +485,15 @@ svg {
 
 .field__error {
   font-size: var(--text-xs);
+  color: var(--error);
+}
+
+.form-status {
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
+}
+
+.form-status[data-status="error"] {
   color: var(--error);
 }
 

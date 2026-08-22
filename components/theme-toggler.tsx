@@ -1,15 +1,26 @@
 "use client";
 
-import { useTheme } from "next-themes";
-
 export default function ThemeToggler() {
-  const { setTheme, resolvedTheme } = useTheme();
+  function toggleTheme() {
+    const root = document.documentElement;
+    const next = root.classList.contains("dark") ? "light" : "dark";
+
+    root.classList.remove("light", "dark");
+    root.classList.add(next);
+
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      // Private browsing or blocked storage — the toggle still works for
+      // this page view, it just will not be remembered.
+    }
+  }
 
   return (
     <button
       className="theme-toggle"
       type="button"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      onClick={toggleTheme}
       aria-label="Toggle color theme"
       title="Toggle color theme"
     >
