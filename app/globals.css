@@ -185,8 +185,8 @@ svg {
    opportunity, so the pair can never wrap apart. */
 .icon-arrow {
   display: inline-block; /* the global rule above sets svg { display: block } */
-  width: 0.85em;
-  height: 0.85em;
+  width: 0.75em;
+  height: 0.75em;
   vertical-align: baseline;
   margin-inline-start: 0.28em;
   flex: none;
