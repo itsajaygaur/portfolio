@@ -10,7 +10,7 @@ const arrowProps = {
   viewBox: "0 0 10 10",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.4,
+  strokeWidth: 1.1,
   strokeLinecap: "round",
   strokeLinejoin: "round",
   className: "icon-arrow",
