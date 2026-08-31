@@ -1,0 +1,48 @@
+name: Security Scan
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  obfuscation-scan:
+    name: Obfuscated code scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Static scan only — deliberately does not install or run project code,
+      # so a malicious dependency or config cannot execute inside this job.
+      - name: Scan for obfuscated / dynamically-executed JavaScript
+        run: bash .github/scripts/scan-obfuscation.sh
+
+      - name: Fail on install lifecycle scripts in package.json
+        run: |
+          if grep -qE '"(pre|post)?install"[[:space:]]*:' package.json; then
+            echo "::error::package.json declares an install lifecycle script."
+            echo "These run automatically on 'npm install' and are a common"
+            echo "supply-chain execution vector. Remove it or justify it in review."
+            exit 1
+          fi
+          echo "No install lifecycle scripts declared."
+
+      - name: Fail on non-npmjs resolved URLs in the lockfile
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "No package-lock.json; skipping."
+            exit 0
+          fi
+          bad=$(grep -oE '"resolved": "[^"]+"' package-lock.json \
+                | grep -v 'registry\.npmjs\.org' || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Lockfile resolves packages from outside registry.npmjs.org:"
+            echo "$bad"
+            exit 1
+          fi
+          echo "All lockfile entries resolve to registry.npmjs.org."
