@@ -225,6 +225,18 @@ svg {
   font-size: var(--text-xs);
 }
 
+/* .link-quiet reserves its hover underline below the text — 1px of padding
+   plus a 1px transparent border — so a link's box is 2px taller at the
+   bottom than the text it wraps. Centring that lopsided box in the header
+   row leaves the labels sitting a pixel high, and the theme icon, which is
+   centred honestly, reads low beside them. Mirroring the reserved space on
+   top makes the box symmetric about its text, so centring the box centres
+   what you actually see. */
+.site-nav .link-quiet {
+  padding-top: 1px;
+  border-top: 1px solid transparent;
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
